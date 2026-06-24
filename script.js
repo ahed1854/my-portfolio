@@ -66,7 +66,6 @@ const switchTab = (tabName) => {
     }
 
     document.getElementById("editor").scrollTop = 0;
-    updateMinimap();
 };
 
 tabs.forEach((tab) => {
@@ -156,7 +155,6 @@ const updateCursorPos = () => {
     const lineHeight = 24;
     const line = Math.floor(scrollTop / lineHeight) + 1;
     cursorPos.textContent = `Ln ${Math.min(line, 999)}, Col 1`;
-    updateMinimapViewport();
 };
 
 editor.addEventListener("scroll", updateCursorPos);
@@ -174,49 +172,6 @@ const updateActiveLine = () => {
 };
 
 editor.addEventListener("scroll", updateActiveLine);
-
-// --- Minimap ---
-const minimap = document.getElementById("minimap");
-const minimapContent = document.getElementById("minimapContent");
-const minimapViewport = document.getElementById("minimapViewport");
-const toggleMinimap = document.getElementById("toggleMinimap");
-
-toggleMinimap.addEventListener("click", () => {
-    minimap.classList.toggle("active");
-    if (minimap.classList.contains("active")) {
-        updateMinimap();
-    }
-});
-
-const updateMinimap = () => {
-    const activeContent = document.querySelector(".code-content.active");
-    if (!activeContent) return;
-
-    const text = activeContent.textContent;
-    const lines = text.split("\n").slice(0, 100);
-    minimapContent.innerHTML = lines
-        .map(
-            (l) =>
-                `<div style="height:2px;overflow:hidden;">${l.substring(0, 50)}</div>`,
-        )
-        .join("");
-};
-
-const updateMinimapViewport = () => {
-    if (!minimap.classList.contains("active")) return;
-
-    const scrollTop = editor.scrollTop;
-    const scrollHeight = editor.scrollHeight;
-    const clientHeight = editor.clientHeight;
-
-    const viewportTop =
-        (scrollTop / scrollHeight) * minimapContent.offsetHeight;
-    const viewportHeight =
-        (clientHeight / scrollHeight) * minimapContent.offsetHeight;
-
-    minimapViewport.style.top = `${viewportTop}px`;
-    minimapViewport.style.height = `${Math.max(viewportHeight, 20)}px`;
-};
 
 // --- Terminal (Fully Interactive) ---
 const terminal = document.getElementById("terminal");
@@ -491,7 +446,7 @@ terminalBody.addEventListener("click", () => {
     terminalInput.focus();
 });
 
-// --- Command Palette (Shortcut: Ctrl+Shift+K) ---
+// --- Command Palette (Shortcut: Ctrl+Shift+Q) ---
 const commandPalette = document.getElementById("commandPalette");
 const cpInput = document.getElementById("cpInput");
 const cpResults = document.getElementById("cpResults");
@@ -500,25 +455,25 @@ const paletteCommands = [
     {
         label: "Go to About",
         action: () => scrollToSection("about"),
-        shortcut: "Cmd+1",
+        shortcut: "Ctrl+1",
         icon: "👤",
     },
     {
         label: "Go to Projects",
         action: () => scrollToSection("projects"),
-        shortcut: "Cmd+2",
+        shortcut: "Ctrl+2",
         icon: "📁",
     },
     {
         label: "Go to Skills",
         action: () => scrollToSection("skills"),
-        shortcut: "Cmd+3",
+        shortcut: "Ctrl+3",
         icon: "⚡",
     },
     {
         label: "Go to Contact",
         action: () => scrollToSection("contact"),
-        shortcut: "Cmd+4",
+        shortcut: "Ctrl+4",
         icon: "✉️",
     },
     {
@@ -530,7 +485,7 @@ const paletteCommands = [
     {
         label: "Toggle Explorer",
         action: () => toggleExplorer.click(),
-        shortcut: "Cmd+Shift+E",
+        shortcut: "Ctrl+Shift+Z",
         icon: "📂",
     },
     {
@@ -538,12 +493,6 @@ const paletteCommands = [
         action: () => toggleTerminal.click(),
         shortcut: "Ctrl+`",
         icon: "💻",
-    },
-    {
-        label: "Toggle Minimap",
-        action: () => toggleMinimap.click(),
-        shortcut: "",
-        icon: "🗺️",
     },
     {
         label: "Open README",
@@ -560,13 +509,13 @@ const paletteCommands = [
     {
         label: "Find in File",
         action: () => toggleFindWidget(),
-        shortcut: "Cmd+F",
+        shortcut: "Ctrl+F",
         icon: "🔍",
     },
     {
         label: "Command Palette",
         action: () => {},
-        shortcut: "Cmd+Shift+K",
+        shortcut: "Ctrl+Shift+Q",
         icon: "⌘",
     },
 ];
@@ -725,8 +674,12 @@ document.querySelectorAll(".token-type").forEach((el) => {
 
 // --- Keyboard Shortcuts (Updated) ---
 document.addEventListener("keydown", (e) => {
-    // Command Palette: Cmd/Ctrl+Shift+K (NOT P — avoids print)
-    if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.key === "k") {
+    // Command Palette: Ctrl+Shift+Q (or Cmd+Shift+Q)
+    if (
+        (e.metaKey || e.ctrlKey) &&
+        e.shiftKey &&
+        (e.key === "q" || e.key === "Q")
+    ) {
         e.preventDefault();
         openCommandPalette();
         return;
@@ -757,8 +710,12 @@ document.addEventListener("keydown", (e) => {
         }
     }
 
-    // Explorer toggle: Cmd/Ctrl+Shift+E
-    if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.key === "e") {
+    // Explorer toggle: Ctrl+Shift+Z (or Cmd+Shift+Z)
+    if (
+        (e.metaKey || e.ctrlKey) &&
+        e.shiftKey &&
+        (e.key === "z" || e.key === "Z")
+    ) {
         e.preventDefault();
         toggleExplorer.click();
         return;
@@ -824,7 +781,6 @@ updateGitChanges();
 // --- Initialize ---
 document.addEventListener("DOMContentLoaded", () => {
     switchTab("portfolio");
-    updateMinimap();
 
     const content = document.querySelector(".code-content.active");
     if (content) {
@@ -847,9 +803,4 @@ document.addEventListener("DOMContentLoaded", () => {
     addedIndices.forEach((i) => {
         if (allLines[i]) allLines[i].classList.add("added");
     });
-});
-
-window.addEventListener("resize", () => {
-    updateMinimap();
-    updateMinimapViewport();
 });

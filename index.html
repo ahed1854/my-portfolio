@@ -2,7 +2,7 @@
 <html lang="en" data-theme="dark">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
         <title>portfolio.ts — Your Name</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,9 +17,8 @@
         <div class="command-palette" id="commandPalette">
             <div class="cp-backdrop"></div>
             <div class="cp-container">
-                <!-- In the cp-input-wrap div, change the icon: -->
                 <div class="cp-input-wrap">
-                    <span class="cp-icon">⌘⇧K</span>
+                    <span class="cp-icon">⌘⇧Q</span>
                     <input
                         type="text"
                         class="cp-input"
@@ -63,7 +62,7 @@
                 <div
                     class="activity-icon active"
                     data-section="about"
-                    title="About (Cmd+1)"
+                    title="About (Ctrl+1)"
                 >
                     <svg
                         viewBox="0 0 24 24"
@@ -80,7 +79,7 @@
                 <div
                     class="activity-icon"
                     data-section="projects"
-                    title="Projects (Cmd+2)"
+                    title="Projects (Ctrl+2)"
                 >
                     <svg
                         viewBox="0 0 24 24"
@@ -98,7 +97,7 @@
                 <div
                     class="activity-icon"
                     data-section="skills"
-                    title="Skills (Cmd+3)"
+                    title="Skills (Ctrl+3)"
                 >
                     <svg
                         viewBox="0 0 24 24"
@@ -115,7 +114,7 @@
                 <div
                     class="activity-icon"
                     data-section="contact"
-                    title="Contact (Cmd+4)"
+                    title="Contact (Ctrl+4)"
                 >
                     <svg
                         viewBox="0 0 24 24"
@@ -135,7 +134,7 @@
                 <div
                     class="activity-icon"
                     id="toggleExplorer"
-                    title="Toggle Explorer (Cmd+Shift+E)"
+                    title="Toggle Explorer (Ctrl+Shift+Z)"
                 >
                     <svg
                         viewBox="0 0 24 24"
@@ -172,25 +171,6 @@
                     >
                         <polyline points="4 17 10 11 4 5" />
                         <line x1="12" y1="19" x2="20" y2="19" />
-                    </svg>
-                </div>
-                <div
-                    class="activity-icon"
-                    id="toggleMinimap"
-                    title="Toggle Minimap"
-                >
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    >
-                        <rect x="3" y="3" width="7" height="7" />
-                        <rect x="14" y="3" width="7" height="7" />
-                        <rect x="14" y="14" width="7" height="7" />
-                        <rect x="3" y="14" width="7" height="7" />
                     </svg>
                 </div>
                 <div class="activity-spacer"></div>
@@ -440,704 +420,670 @@
                     <span class="bc-file" id="bcFile">portfolio.ts</span>
                 </div>
 
-                <!-- Editor Content -->
+                <!-- Editor Content (no minimap) -->
                 <div class="editor-wrapper">
                     <div class="editor" id="editor">
                         <!-- portfolio.ts content -->
-                        <div class="code-content active" id="portfolioContent">
-                            <!-- File Header -->
-                            <div class="line">
-                                <span class="token-comment"
-                                    >//
-                                    ============================================================</span
-                                >
-                            </div>
-                            <div class="line">
-                                <span class="token-comment"
-                                    >//
-                                    <span class="hero-title"
-                                        >PORTFOLIO.TS</span
-                                    ></span
-                                >
-                            </div>
-                            <div class="line">
-                                <span class="token-comment"
-                                    >// Graduate Computer Science Student</span
-                                >
-                            </div>
-                            <div class="line">
-                                <span class="token-comment"
-                                    >//
-                                    ============================================================</span
-                                >
-                            </div>
-                            <div class="line"></div>
+                        <!-- portfolio.ts content -->
+<div class="code-content active" id="portfolioContent">
+    <!-- File Header -->
+    <div class="line">
+        <span class="token-comment">// ============================================================</span>
+    </div>
+    <div class="line">
+        <span class="token-comment">// <span class="hero-title">PORTFOLIO.TS</span></span>
+    </div>
+    <div class="line">
+        <span class="token-comment">// Graduate CS Student | Systems &amp; Infrastructure</span>
+    </div>
+    <div class="line">
+        <span class="token-comment">// Building resilient, high-performance distributed systems.</span>
+    </div>
+    <div class="line">
+        <span class="token-comment">// ============================================================</span>
+    </div>
+    <div class="line"></div>
 
-                            <!-- Imports -->
-                            <div class="line">
-                                <span class="token-keyword">import</span>
-                                <span class="token-punctuation">{</span>
-                                <span class="token-variable">Life</span
-                                ><span class="token-punctuation">,</span>
-                                <span class="token-variable">Code</span
-                                ><span class="token-punctuation">,</span>
-                                <span class="token-variable">Coffee</span>
-                                <span class="token-punctuation">}</span>
-                                <span class="token-keyword">from</span>
-                                <span class="token-string">'essentials'</span
-                                ><span class="token-punctuation">;</span>
-                            </div>
-                            <div class="line"></div>
+    <!-- Imports -->
+    <div class="line">
+        <span class="token-keyword">import</span>
+        <span class="token-punctuation">{</span>
+        <span class="token-variable">Life</span
+        ><span class="token-punctuation">,</span>
+        <span class="token-variable">Code</span
+        ><span class="token-punctuation">,</span>
+        <span class="token-variable">Coffee</span>
+        <span class="token-punctuation">}</span>
+        <span class="token-keyword">from</span>
+        <span class="token-string">'essentials'</span
+        ><span class="token-punctuation">;</span>
+    </div>
+    <div class="line"></div>
 
-                            <!-- About Section -->
-                            <section class="code-section" id="about">
-                                <div class="line">
-                                    <span class="token-comment">/**</span>
-                                </div>
-                                <div class="line">
-                                    <span class="token-comment">
-                                        *
-                                        <span class="section-heading"
-                                            >@section About</span
-                                        ></span
-                                    >
-                                </div>
-                                <div class="line">
-                                    <span class="token-comment">
-                                        *
-                                        <span class="section-heading"
-                                            >@author Your Name</span
-                                        ></span
-                                    >
-                                </div>
-                                <div class="line">
-                                    <span class="token-comment"> */</span>
-                                </div>
-                                <div class="line"></div>
-                                <div class="line">
-                                    <span class="token-keyword">const</span>
-                                    <span class="token-variable"
-                                        >developer</span
-                                    >
-                                    <span class="token-operator">=</span>
-                                    <span class="token-punctuation">{</span>
-                                </div>
+    <!-- About Section -->
+    <section class="code-section" id="about">
+        <div class="line">
+            <span class="token-comment">/**</span>
+        </div>
+        <div class="line">
+            <span class="token-comment">
+                *
+                <span class="section-heading">@section About</span>
+            </span>
+        </div>
+        <div class="line">
+            <span class="token-comment">
+                *
+                <span class="section-heading">@author Your Name</span>
+            </span>
+        </div>
+        <div class="line">
+            <span class="token-comment"> */</span>
+        </div>
+        <div class="line"></div>
+        <div class="line">
+            <span class="token-keyword">const</span>
+            <span class="token-variable">developer</span>
+            <span class="token-operator">=</span>
+            <span class="token-punctuation">{</span>
+        </div>
 
-                                <div class="line indent">
-                                    <span class="token-property">name</span
-                                    ><span class="token-operator">:</span>
-                                    <span class="token-string hero-name"
-                                        >"Your Name"</span
-                                    ><span class="token-punctuation">,</span>
-                                </div>
-                                <div class="line indent">
-                                    <span class="token-property">role</span
-                                    ><span class="token-operator">:</span>
-                                    <span class="token-string"
-                                        >"Graduate CS Student"</span
-                                    ><span class="token-punctuation">,</span>
-                                </div>
-                                <div class="line indent">
-                                    <span class="token-property">location</span
-                                    ><span class="token-operator">:</span>
-                                    <span class="token-string"
-                                        >"Your City, Country"</span
-                                    ><span class="token-punctuation">,</span>
-                                </div>
-                                <div class="line indent">
-                                    <span class="token-property">interests</span
-                                    ><span class="token-operator">:</span>
-                                    <span class="token-punctuation">[</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-string"
-                                        >"Distributed Systems"</span
-                                    ><span class="token-punctuation">,</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-string"
-                                        >"Machine Learning"</span
-                                    ><span class="token-punctuation">,</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-string"
-                                        >"Systems Programming"</span
-                                    >
-                                </div>
-                                <div class="line indent">
-                                    <span class="token-punctuation">],</span>
-                                </div>
-                                <div class="line indent">
-                                    <span class="token-property">currently</span
-                                    ><span class="token-operator">:</span>
-                                    <span class="token-string"
-                                        >"Seeking Summer 2025
-                                        Opportunities"</span
-                                    ><span class="token-punctuation">,</span>
-                                </div>
-                                <div class="line indent">
-                                    <span class="token-property">links</span
-                                    ><span class="token-operator">:</span>
-                                    <span class="token-punctuation">{</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-property">github</span
-                                    ><span class="token-operator">:</span>
-                                    <a
-                                        href="https://github.com/YOUR_USERNAME"
-                                        target="_blank"
-                                        class="token-string link"
-                                        >"github.com/YOUR_USERNAME"</a
-                                    ><span class="token-punctuation">,</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-property">linkedin</span
-                                    ><span class="token-operator">:</span>
-                                    <a
-                                        href="https://linkedin.com/in/YOUR_USERNAME"
-                                        target="_blank"
-                                        class="token-string link"
-                                        >"linkedin.com/in/YOUR_USERNAME"</a
-                                    ><span class="token-punctuation">,</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-property">email</span
-                                    ><span class="token-operator">:</span>
-                                    <a
-                                        href="mailto:your.email@example.com"
-                                        class="token-string link"
-                                        >"your.email@example.com"</a
-                                    >
-                                </div>
-                                <div class="line indent">
-                                    <span class="token-punctuation">}</span>
-                                </div>
-                                <div class="line">
-                                    <span class="token-punctuation">};</span>
-                                </div>
-                                <div class="line"></div>
-                            </section>
+        <div class="line indent">
+            <span class="token-property">name</span
+            ><span class="token-operator">:</span>
+            <span class="token-string hero-name">"Your Name"</span
+            ><span class="token-punctuation">,</span>
+        </div>
+        <div class="line indent">
+            <span class="token-property">tagline</span
+            ><span class="token-operator">:</span>
+            <span class="token-string">"Building the future, one commit at a time."</span
+            ><span class="token-punctuation">,</span>
+        </div>
+        <div class="line indent">
+            <span class="token-property">role</span
+            ><span class="token-operator">:</span>
+            <span class="token-string">"Graduate CS Student &amp; Infrastructure Engineer"</span
+            ><span class="token-punctuation">,</span>
+        </div>
+        <div class="line indent">
+            <span class="token-property">location</span
+            ><span class="token-operator">:</span>
+            <span class="token-string">"San Francisco, CA"</span
+            ><span class="token-punctuation">,</span>
+        </div>
+        <div class="line indent">
+            <span class="token-property">bio</span
+            ><span class="token-operator">:</span>
+            <span class="token-string">"Passionate about systems programming, distributed consensus, and low-latency architectures. Currently exploring ML infrastructure and cloud-native tooling."</span
+            ><span class="token-punctuation">,</span>
+        </div>
+        <div class="line indent">
+            <span class="token-property">interests</span
+            ><span class="token-operator">:</span>
+            <span class="token-punctuation">[</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-string">"Distributed Systems"</span
+            ><span class="token-punctuation">,</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-string">"Machine Learning"</span
+            ><span class="token-punctuation">,</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-string">"Systems Programming"</span
+            ><span class="token-punctuation">,</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-string">"Cloud Computing"</span
+            ><span class="token-punctuation">,</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-string">"High-Performance Computing"</span>
+        </div>
+        <div class="line indent">
+            <span class="token-punctuation">],</span>
+        </div>
+        <div class="line indent">
+            <span class="token-property">currently</span
+            ><span class="token-operator">:</span>
+            <span class="token-string">"Actively seeking Summer 2025 SWE / Infrastructure internships."</span
+            ><span class="token-punctuation">,</span>
+        </div>
+        <div class="line indent">
+            <span class="token-property">links</span
+            ><span class="token-operator">:</span>
+            <span class="token-punctuation">{</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-property">github</span
+            ><span class="token-operator">:</span>
+            <a
+                href="https://github.com/YOUR_USERNAME"
+                target="_blank"
+                class="token-string link"
+                >"github.com/YOUR_USERNAME"</a
+            ><span class="token-punctuation">,</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-property">linkedin</span
+            ><span class="token-operator">:</span>
+            <a
+                href="https://linkedin.com/in/YOUR_USERNAME"
+                target="_blank"
+                class="token-string link"
+                >"linkedin.com/in/YOUR_USERNAME"</a
+            ><span class="token-punctuation">,</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-property">email</span
+            ><span class="token-operator">:</span>
+            <a href="mailto:your.email@example.com" class="token-string link"
+                >"your.email@example.com"</a
+            >
+        </div>
+        <div class="line indent">
+            <span class="token-punctuation">}</span>
+        </div>
+        <div class="line">
+            <span class="token-punctuation">};</span>
+        </div>
+        <div class="line"></div>
+    </section>
 
-                            <!-- Projects Section -->
-                            <section class="code-section" id="projects">
-                                <div class="line">
-                                    <span class="token-comment"
-                                        >//
-                                        ------------------------------------------------------------</span
-                                    >
-                                </div>
-                                <div class="line">
-                                    <span class="token-comment"
-                                        >//
-                                        <span class="section-heading"
-                                            >Section: Projects</span
-                                        ></span
-                                    >
-                                </div>
-                                <div class="line">
-                                    <span class="token-comment"
-                                        >//
-                                        ------------------------------------------------------------</span
-                                    >
-                                </div>
-                                <div class="line"></div>
-                                <div class="line">
-                                    <span class="token-keyword">interface</span>
-                                    <span class="token-function">Project</span>
-                                    <span class="token-punctuation">{</span>
-                                </div>
-                                <div class="line indent">
-                                    <span class="token-property">name</span
-                                    ><span class="token-operator">:</span>
-                                    <span class="token-type">string</span
-                                    ><span class="token-punctuation">;</span>
-                                </div>
-                                <div class="line indent">
-                                    <span class="token-property"
-                                        >description</span
-                                    ><span class="token-operator">:</span>
-                                    <span class="token-type">string</span
-                                    ><span class="token-punctuation">;</span>
-                                </div>
-                                <div class="line indent">
-                                    <span class="token-property">tech</span
-                                    ><span class="token-operator">:</span>
-                                    <span class="token-type">string</span
-                                    ><span class="token-punctuation">[];</span>
-                                </div>
-                                <div class="line indent">
-                                    <span class="token-property">links</span
-                                    ><span class="token-operator">:</span>
-                                    <span class="token-punctuation">{</span>
-                                    <span class="token-property">source</span
-                                    ><span class="token-operator">:</span>
-                                    <span class="token-type">string</span
-                                    ><span class="token-punctuation">;</span>
-                                    <span class="token-property">demo</span
-                                    ><span class="token-operator">?:</span>
-                                    <span class="token-type">string</span>
-                                    <span class="token-punctuation">};</span>
-                                </div>
-                                <div class="line">
-                                    <span class="token-punctuation">}</span>
-                                </div>
-                                <div class="line"></div>
-                                <div class="line">
-                                    <span class="token-keyword">const</span>
-                                    <span class="token-variable">projects</span
-                                    ><span class="token-operator">:</span>
-                                    <span class="token-type">Project</span
-                                    ><span class="token-punctuation">[]</span>
-                                    <span class="token-operator">=</span>
-                                    <span class="token-punctuation">[</span>
-                                </div>
+    <!-- Projects Section -->
+    <section class="code-section" id="projects">
+        <div class="line">
+            <span class="token-comment">// ------------------------------------------------------------</span>
+        </div>
+        <div class="line">
+            <span class="token-comment">// <span class="section-heading">Section: Projects</span></span>
+        </div>
+        <div class="line">
+            <span class="token-comment">// ------------------------------------------------------------</span>
+        </div>
+        <div class="line"></div>
+        <div class="line">
+            <span class="token-keyword">interface</span>
+            <span class="token-function">Project</span>
+            <span class="token-punctuation">{</span>
+        </div>
+        <div class="line indent">
+            <span class="token-property">name</span
+            ><span class="token-operator">:</span>
+            <span class="token-type">string</span
+            ><span class="token-punctuation">;</span>
+        </div>
+        <div class="line indent">
+            <span class="token-property">description</span
+            ><span class="token-operator">:</span>
+            <span class="token-type">string</span
+            ><span class="token-punctuation">;</span>
+        </div>
+        <div class="line indent">
+            <span class="token-property">tech</span
+            ><span class="token-operator">:</span>
+            <span class="token-type">string</span
+            ><span class="token-punctuation">[];</span>
+        </div>
+        <div class="line indent">
+            <span class="token-property">links</span
+            ><span class="token-operator">:</span>
+            <span class="token-punctuation">{</span>
+            <span class="token-property">source</span
+            ><span class="token-operator">:</span>
+            <span class="token-type">string</span
+            ><span class="token-punctuation">;</span>
+            <span class="token-property">demo</span
+            ><span class="token-operator">?:</span>
+            <span class="token-type">string</span>
+            <span class="token-punctuation">};</span>
+        </div>
+        <div class="line">
+            <span class="token-punctuation">}</span>
+        </div>
+        <div class="line"></div>
+        <div class="line">
+            <span class="token-keyword">const</span>
+            <span class="token-variable">projects</span
+            ><span class="token-operator">:</span>
+            <span class="token-type">Project</span
+            ><span class="token-punctuation">[]</span>
+            <span class="token-operator">=</span>
+            <span class="token-punctuation">[</span>
+        </div>
 
-                                <!-- Project 1 -->
-                                <div class="line indent">
-                                    <span class="token-punctuation">{</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-property">name</span
-                                    ><span class="token-operator">:</span>
-                                    <span class="token-string project-name"
-                                        >"Distributed Task Queue"</span
-                                    ><span class="token-punctuation">,</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-property"
-                                        >description</span
-                                    ><span class="token-operator">:</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-string"
-                                        >"Fault-tolerant distributed task queue
-                                        built with Go and Redis. Features
-                                        automatic retries, priority scheduling,
-                                        and horizontal scaling via
-                                        Kubernetes."</span
-                                    ><span class="token-punctuation">,</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-property">tech</span
-                                    ><span class="token-operator">:</span>
-                                    <span class="token-punctuation">[</span
-                                    ><span class="token-string">"Go"</span
-                                    ><span class="token-punctuation">,</span>
-                                    <span class="token-string">"Redis"</span
-                                    ><span class="token-punctuation">,</span>
-                                    <span class="token-string">"Docker"</span
-                                    ><span class="token-punctuation">,</span>
-                                    <span class="token-string">"gRPC"</span
-                                    ><span class="token-punctuation">,</span>
-                                    <span class="token-string"
-                                        >"Kubernetes"</span
-                                    ><span class="token-punctuation">],</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-property">links</span
-                                    ><span class="token-operator">:</span>
-                                    <span class="token-punctuation">{</span>
-                                </div>
-                                <div class="line indent3">
-                                    <span class="token-property">source</span
-                                    ><span class="token-operator">:</span>
-                                    <a
-                                        href="#"
-                                        target="_blank"
-                                        class="token-string link"
-                                        >"github.com/.../task-queue"</a
-                                    ><span class="token-punctuation">,</span>
-                                </div>
-                                <div class="line indent3">
-                                    <span class="token-property">demo</span
-                                    ><span class="token-operator">:</span>
-                                    <a
-                                        href="#"
-                                        target="_blank"
-                                        class="token-string link"
-                                        >"demo.taskqueue.dev"</a
-                                    >
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-punctuation">}</span>
-                                </div>
-                                <div class="line indent">
-                                    <span class="token-punctuation">},</span>
-                                </div>
-                                <div class="line"></div>
+        <!-- Project 1 -->
+        <div class="line indent">
+            <span class="token-punctuation">{</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-property">name</span
+            ><span class="token-operator">:</span>
+            <span class="token-string project-name">"Distributed Task Queue"</span
+            ><span class="token-punctuation">,</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-property">description</span
+            ><span class="token-operator">:</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-string">"Fault-tolerant task queue with exactly-once semantics, built in Go. Features automatic retries with exponential backoff, priority scheduling, and dynamic horizontal scaling via Kubernetes HPA. Achieved 99.99% reliability under peak load."</span
+            ><span class="token-punctuation">,</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-property">tech</span
+            ><span class="token-operator">:</span>
+            <span class="token-punctuation">[</span
+            ><span class="token-string">"Go"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string">"Redis"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string">"Docker"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string">"gRPC"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string">"Kubernetes"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string">"Prometheus"</span
+            ><span class="token-punctuation">],</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-property">links</span
+            ><span class="token-operator">:</span>
+            <span class="token-punctuation">{</span>
+        </div>
+        <div class="line indent3">
+            <span class="token-property">source</span
+            ><span class="token-operator">:</span>
+            <a href="#" target="_blank" class="token-string link"
+                >"github.com/.../task-queue"</a
+            ><span class="token-punctuation">,</span>
+        </div>
+        <div class="line indent3">
+            <span class="token-property">demo</span
+            ><span class="token-operator">:</span>
+            <a href="#" target="_blank" class="token-string link"
+                >"demo.taskqueue.dev"</a
+            >
+        </div>
+        <div class="line indent2">
+            <span class="token-punctuation">}</span>
+        </div>
+        <div class="line indent">
+            <span class="token-punctuation">},</span>
+        </div>
+        <div class="line"></div>
 
-                                <!-- Project 2 -->
-                                <div class="line indent">
-                                    <span class="token-punctuation">{</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-property">name</span
-                                    ><span class="token-operator">:</span>
-                                    <span class="token-string project-name"
-                                        >"ML Pipeline Framework"</span
-                                    ><span class="token-punctuation">,</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-property"
-                                        >description</span
-                                    ><span class="token-operator">:</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-string"
-                                        >"End-to-end ML pipeline with automated
-                                        feature engineering, model selection,
-                                        and deployment. Reduced model deployment
-                                        time by 80%."</span
-                                    ><span class="token-punctuation">,</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-property">tech</span
-                                    ><span class="token-operator">:</span>
-                                    <span class="token-punctuation">[</span
-                                    ><span class="token-string">"Python"</span
-                                    ><span class="token-punctuation">,</span>
-                                    <span class="token-string">"PyTorch"</span
-                                    ><span class="token-punctuation">,</span>
-                                    <span class="token-string">"MLflow"</span
-                                    ><span class="token-punctuation">,</span>
-                                    <span class="token-string"
-                                        >"Kubernetes"</span
-                                    ><span class="token-punctuation">],</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-property">links</span
-                                    ><span class="token-operator">:</span>
-                                    <span class="token-punctuation">{</span>
-                                </div>
-                                <div class="line indent3">
-                                    <span class="token-property">source</span
-                                    ><span class="token-operator">:</span>
-                                    <a
-                                        href="#"
-                                        target="_blank"
-                                        class="token-string link"
-                                        >"github.com/.../ml-pipe"</a
-                                    >
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-punctuation">}</span>
-                                </div>
-                                <div class="line indent">
-                                    <span class="token-punctuation">},</span>
-                                </div>
-                                <div class="line"></div>
+        <!-- Project 2 -->
+        <div class="line indent">
+            <span class="token-punctuation">{</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-property">name</span
+            ><span class="token-operator">:</span>
+            <span class="token-string project-name">"ML Pipeline Framework"</span
+            ><span class="token-punctuation">,</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-property">description</span
+            ><span class="token-operator">:</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-string">"End-to-end ML orchestration platform automating feature engineering, hyperparameter tuning, and model serving. Integrated with MLflow for experiment tracking. Reduced model deployment time from 2 weeks to 2 days (80% improvement)."</span
+            ><span class="token-punctuation">,</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-property">tech</span
+            ><span class="token-operator">:</span>
+            <span class="token-punctuation">[</span
+            ><span class="token-string">"Python"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string">"PyTorch"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string">"MLflow"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string">"Kubernetes"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string">"Argo Workflows"</span
+            ><span class="token-punctuation">],</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-property">links</span
+            ><span class="token-operator">:</span>
+            <span class="token-punctuation">{</span>
+        </div>
+        <div class="line indent3">
+            <span class="token-property">source</span
+            ><span class="token-operator">:</span>
+            <a href="#" target="_blank" class="token-string link"
+                >"github.com/.../ml-pipe"</a
+            >
+        </div>
+        <div class="line indent2">
+            <span class="token-punctuation">}</span>
+        </div>
+        <div class="line indent">
+            <span class="token-punctuation">},</span>
+        </div>
+        <div class="line"></div>
 
-                                <!-- Project 3 -->
-                                <div class="line indent">
-                                    <span class="token-punctuation">{</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-property">name</span
-                                    ><span class="token-operator">:</span>
-                                    <span class="token-string project-name"
-                                        >"Real-time Collaborative Editor"</span
-                                    ><span class="token-punctuation">,</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-property"
-                                        >description</span
-                                    ><span class="token-operator">:</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-string"
-                                        >"CRDT-based collaborative editor with
-                                        WebRTC peer-to-peer sync. Supports 100+
-                                        concurrent users with sub-50ms
-                                        latency."</span
-                                    ><span class="token-punctuation">,</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-property">tech</span
-                                    ><span class="token-operator">:</span>
-                                    <span class="token-punctuation">[</span
-                                    ><span class="token-string"
-                                        >"TypeScript"</span
-                                    ><span class="token-punctuation">,</span>
-                                    <span class="token-string">"WebRTC"</span
-                                    ><span class="token-punctuation">,</span>
-                                    <span class="token-string">"Yjs"</span
-                                    ><span class="token-punctuation">,</span>
-                                    <span class="token-string">"Node.js"</span
-                                    ><span class="token-punctuation">],</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-property">links</span
-                                    ><span class="token-operator">:</span>
-                                    <span class="token-punctuation">{</span>
-                                </div>
-                                <div class="line indent3">
-                                    <span class="token-property">source</span
-                                    ><span class="token-operator">:</span>
-                                    <a
-                                        href="#"
-                                        target="_blank"
-                                        class="token-string link"
-                                        >"github.com/.../collab-editor"</a
-                                    ><span class="token-punctuation">,</span>
-                                </div>
-                                <div class="line indent3">
-                                    <span class="token-property">demo</span
-                                    ><span class="token-operator">:</span>
-                                    <a
-                                        href="#"
-                                        target="_blank"
-                                        class="token-string link"
-                                        >"collab.dev"</a
-                                    >
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-punctuation">}</span>
-                                </div>
-                                <div class="line indent">
-                                    <span class="token-punctuation">}</span>
-                                </div>
+        <!-- Project 3 -->
+        <div class="line indent">
+            <span class="token-punctuation">{</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-property">name</span
+            ><span class="token-operator">:</span>
+            <span class="token-string project-name">"Real-time Collaborative Editor"</span
+            ><span class="token-punctuation">,</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-property">description</span
+            ><span class="token-operator">:</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-string">"CRDT-based collaborative text editor with WebRTC peer-to-peer sync and conflict-free merging. Supports 100+ concurrent users with sub-50ms operational latency. Implemented custom Yjs integration and operational transform layer."</span
+            ><span class="token-punctuation">,</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-property">tech</span
+            ><span class="token-operator">:</span>
+            <span class="token-punctuation">[</span
+            ><span class="token-string">"TypeScript"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string">"WebRTC"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string">"Yjs"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string">"Node.js"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string">"WebSockets"</span
+            ><span class="token-punctuation">],</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-property">links</span
+            ><span class="token-operator">:</span>
+            <span class="token-punctuation">{</span>
+        </div>
+        <div class="line indent3">
+            <span class="token-property">source</span
+            ><span class="token-operator">:</span>
+            <a href="#" target="_blank" class="token-string link"
+                >"github.com/.../collab-editor"</a
+            ><span class="token-punctuation">,</span>
+        </div>
+        <div class="line indent3">
+            <span class="token-property">demo</span
+            ><span class="token-operator">:</span>
+            <a href="#" target="_blank" class="token-string link"
+                >"collab.dev"</a
+            >
+        </div>
+        <div class="line indent2">
+            <span class="token-punctuation">}</span>
+        </div>
+        <div class="line indent">
+            <span class="token-punctuation">},</span>
+        </div>
+        <div class="line"></div>
 
-                                <div class="line">
-                                    <span class="token-punctuation">];</span>
-                                </div>
-                                <div class="line"></div>
-                            </section>
+        <!-- Project 4 (new) -->
+        <div class="line indent">
+            <span class="token-punctuation">{</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-property">name</span
+            ><span class="token-operator">:</span>
+            <span class="token-string project-name">"Kubernetes Operator for Stateful Workloads"</span
+            ><span class="token-punctuation">,</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-property">description</span
+            ><span class="token-operator">:</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-string">"Custom Kubernetes operator (in Rust) managing stateful distributed databases. Automates backup/restore, leader election, and rolling upgrades. Reduces operational overhead by 60% and improves recovery time from 10min to 45sec."</span
+            ><span class="token-punctuation">,</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-property">tech</span
+            ><span class="token-operator">:</span>
+            <span class="token-punctuation">[</span
+            ><span class="token-string">"Rust"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string">"Kubernetes"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string">"ETCD"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string">"Helm"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string">"kubebuilder"</span
+            ><span class="token-punctuation">],</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-property">links</span
+            ><span class="token-operator">:</span>
+            <span class="token-punctuation">{</span>
+        </div>
+        <div class="line indent3">
+            <span class="token-property">source</span
+            ><span class="token-operator">:</span>
+            <a href="#" target="_blank" class="token-string link"
+                >"github.com/.../k8s-operator"</a
+            >
+        </div>
+        <div class="line indent2">
+            <span class="token-punctuation">}</span>
+        </div>
+        <div class="line indent">
+            <span class="token-punctuation">}</span>
+        </div>
 
-                            <!-- Skills Section -->
-                            <section class="code-section" id="skills">
-                                <div class="line">
-                                    <span class="token-comment"
-                                        >//
-                                        ------------------------------------------------------------</span
-                                    >
-                                </div>
-                                <div class="line">
-                                    <span class="token-comment"
-                                        >//
-                                        <span class="section-heading"
-                                            >Section: Skills</span
-                                        ></span
-                                    >
-                                </div>
-                                <div class="line">
-                                    <span class="token-comment"
-                                        >//
-                                        ------------------------------------------------------------</span
-                                    >
-                                </div>
-                                <div class="line"></div>
-                                <div class="line">
-                                    <span class="token-keyword">const</span>
-                                    <span class="token-variable">skills</span>
-                                    <span class="token-operator">=</span>
-                                    <span class="token-punctuation">{</span>
-                                </div>
+        <div class="line">
+            <span class="token-punctuation">];</span>
+        </div>
+        <div class="line"></div>
+    </section>
 
-                                <div class="line indent">
-                                    <span class="token-property">languages</span
-                                    ><span class="token-operator">:</span>
-                                    <span class="token-punctuation">[</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-string skill-tag"
-                                        >"Python"</span
-                                    ><span class="token-punctuation">,</span>
-                                    <span class="token-string skill-tag"
-                                        >"Go"</span
-                                    ><span class="token-punctuation">,</span>
-                                    <span class="token-string skill-tag"
-                                        >"C++"</span
-                                    ><span class="token-punctuation">,</span>
-                                    <span class="token-string skill-tag"
-                                        >"TypeScript"</span
-                                    ><span class="token-punctuation">,</span>
-                                    <span class="token-string skill-tag"
-                                        >"Rust"</span
-                                    ><span class="token-punctuation">,</span>
-                                    <span class="token-string skill-tag"
-                                        >"SQL"</span
-                                    >
-                                </div>
-                                <div class="line indent">
-                                    <span class="token-punctuation">],</span>
-                                </div>
+    <!-- Skills Section -->
+    <section class="code-section" id="skills">
+        <div class="line">
+            <span class="token-comment">// ------------------------------------------------------------</span>
+        </div>
+        <div class="line">
+            <span class="token-comment">// <span class="section-heading">Section: Skills</span></span>
+        </div>
+        <div class="line">
+            <span class="token-comment">// ------------------------------------------------------------</span>
+        </div>
+        <div class="line"></div>
+        <div class="line">
+            <span class="token-keyword">const</span>
+            <span class="token-variable">skills</span>
+            <span class="token-operator">=</span>
+            <span class="token-punctuation">{</span>
+        </div>
 
-                                <div class="line indent">
-                                    <span class="token-property"
-                                        >frameworks</span
-                                    ><span class="token-operator">:</span>
-                                    <span class="token-punctuation">[</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-string skill-tag"
-                                        >"PyTorch"</span
-                                    ><span class="token-punctuation">,</span>
-                                    <span class="token-string skill-tag"
-                                        >"TensorFlow"</span
-                                    ><span class="token-punctuation">,</span>
-                                    <span class="token-string skill-tag"
-                                        >"React"</span
-                                    ><span class="token-punctuation">,</span>
-                                    <span class="token-string skill-tag"
-                                        >"Node.js"</span
-                                    ><span class="token-punctuation">,</span>
-                                    <span class="token-string skill-tag"
-                                        >"gRPC"</span
-                                    >
-                                </div>
-                                <div class="line indent">
-                                    <span class="token-punctuation">],</span>
-                                </div>
+        <div class="line indent">
+            <span class="token-property">languages</span
+            ><span class="token-operator">:</span>
+            <span class="token-punctuation">[</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-string skill-tag">"Python"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string skill-tag">"Go"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string skill-tag">"C++"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string skill-tag">"TypeScript"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string skill-tag">"Rust"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string skill-tag">"SQL"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string skill-tag">"Java"</span>
+        </div>
+        <div class="line indent">
+            <span class="token-punctuation">],</span>
+        </div>
 
-                                <div class="line indent">
-                                    <span class="token-property">tools</span
-                                    ><span class="token-operator">:</span>
-                                    <span class="token-punctuation">[</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-string skill-tag"
-                                        >"Docker"</span
-                                    ><span class="token-punctuation">,</span>
-                                    <span class="token-string skill-tag"
-                                        >"Kubernetes"</span
-                                    ><span class="token-punctuation">,</span>
-                                    <span class="token-string skill-tag"
-                                        >"AWS"</span
-                                    ><span class="token-punctuation">,</span>
-                                    <span class="token-string skill-tag"
-                                        >"Git"</span
-                                    ><span class="token-punctuation">,</span>
-                                    <span class="token-string skill-tag"
-                                        >"Linux"</span
-                                    ><span class="token-punctuation">,</span>
-                                    <span class="token-string skill-tag"
-                                        >"Redis"</span
-                                    >
-                                </div>
-                                <div class="line indent">
-                                    <span class="token-punctuation">]</span>
-                                </div>
+        <div class="line indent">
+            <span class="token-property">frameworks</span
+            ><span class="token-operator">:</span>
+            <span class="token-punctuation">[</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-string skill-tag">"PyTorch"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string skill-tag">"TensorFlow"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string skill-tag">"React"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string skill-tag">"Node.js"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string skill-tag">"gRPC"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string skill-tag">"Spring Boot"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string skill-tag">"Apache Spark"</span>
+        </div>
+        <div class="line indent">
+            <span class="token-punctuation">],</span>
+        </div>
 
-                                <div class="line">
-                                    <span class="token-punctuation">};</span>
-                                </div>
-                                <div class="line"></div>
-                            </section>
+        <div class="line indent">
+            <span class="token-property">tools</span
+            ><span class="token-operator">:</span>
+            <span class="token-punctuation">[</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-string skill-tag">"Docker"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string skill-tag">"Kubernetes"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string skill-tag">"AWS"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string skill-tag">"Git"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string skill-tag">"Linux"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string skill-tag">"Redis"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string skill-tag">"Terraform"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string skill-tag">"Prometheus"</span
+            ><span class="token-punctuation">,</span>
+            <span class="token-string skill-tag">"Grafana"</span>
+        </div>
+        <div class="line indent">
+            <span class="token-punctuation">]</span>
+        </div>
 
-                            <!-- Contact Section -->
-                            <section class="code-section" id="contact">
-                                <div class="line">
-                                    <span class="token-comment"
-                                        >//
-                                        ------------------------------------------------------------</span
-                                    >
-                                </div>
-                                <div class="line">
-                                    <span class="token-comment"
-                                        >//
-                                        <span class="section-heading"
-                                            >Section: Contact</span
-                                        ></span
-                                    >
-                                </div>
-                                <div class="line">
-                                    <span class="token-comment"
-                                        >//
-                                        ------------------------------------------------------------</span
-                                    >
-                                </div>
-                                <div class="line"></div>
-                                <div class="line">
-                                    <span class="token-comment">/**</span>
-                                </div>
-                                <div class="line">
-                                    <span class="token-comment">
-                                        * I'm currently open to new
-                                        opportunities and collaborations.</span
-                                    >
-                                </div>
-                                <div class="line">
-                                    <span class="token-comment">
-                                        * Feel free to reach out if you want to
-                                        build something together.</span
-                                    >
-                                </div>
-                                <div class="line">
-                                    <span class="token-comment"> */</span>
-                                </div>
-                                <div class="line"></div>
-                                <div class="line">
-                                    <span class="token-keyword"
-                                        >async function</span
-                                    >
-                                    <span class="token-function">connect</span
-                                    ><span class="token-punctuation">()</span>
-                                    <span class="token-punctuation">{</span>
-                                </div>
-                                <div class="line indent">
-                                    <span class="token-keyword">const</span>
-                                    <span class="token-variable">channels</span>
-                                    <span class="token-operator">=</span>
-                                    <span class="token-punctuation">{</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-property">email</span
-                                    ><span class="token-operator">:</span>
-                                    <a
-                                        href="mailto:your.email@example.com"
-                                        class="token-string link"
-                                        >"your.email@example.com"</a
-                                    ><span class="token-punctuation">,</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-property">github</span
-                                    ><span class="token-operator">:</span>
-                                    <a
-                                        href="https://github.com/YOUR_USERNAME"
-                                        target="_blank"
-                                        class="token-string link"
-                                        >"github.com/YOUR_USERNAME"</a
-                                    ><span class="token-punctuation">,</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-property">linkedin</span
-                                    ><span class="token-operator">:</span>
-                                    <a
-                                        href="https://linkedin.com/in/YOUR_USERNAME"
-                                        target="_blank"
-                                        class="token-string link"
-                                        >"linkedin.com/in/YOUR_USERNAME"</a
-                                    >
-                                </div>
-                                <div class="line indent">
-                                    <span class="token-punctuation">};</span>
-                                </div>
-                                <div class="line indent"></div>
-                                <div class="line indent">
-                                    <span class="token-keyword">return</span>
-                                    <span class="token-keyword">await</span>
-                                    <span class="token-function"
-                                        >sendMessage</span
-                                    ><span class="token-punctuation">(</span
-                                    ><span class="token-variable">channels</span
-                                    ><span class="token-punctuation">.</span
-                                    ><span class="token-property">email</span
-                                    ><span class="token-punctuation">);</span>
-                                </div>
-                                <div class="line">
-                                    <span class="token-punctuation">}</span>
-                                </div>
-                                <div class="line"></div>
-                            </section>
+        <div class="line">
+            <span class="token-punctuation">};</span>
+        </div>
+        <div class="line"></div>
+    </section>
 
-                            <!-- EOF -->
-                            <div class="line">
-                                <span class="token-comment">// EOF</span>
-                            </div>
-                            <div class="line">
-                                <span class="token-cursor">|</span>
-                            </div>
-                        </div>
+    <!-- Contact Section -->
+    <section class="code-section" id="contact">
+        <div class="line">
+            <span class="token-comment">// ------------------------------------------------------------</span>
+        </div>
+        <div class="line">
+            <span class="token-comment">// <span class="section-heading">Section: Contact</span></span>
+        </div>
+        <div class="line">
+            <span class="token-comment">// ------------------------------------------------------------</span>
+        </div>
+        <div class="line"></div>
+        <div class="line">
+            <span class="token-comment">/**</span>
+        </div>
+        <div class="line">
+            <span class="token-comment">
+                * I'm currently open to new opportunities and collaborations.
+            </span>
+        </div>
+        <div class="line">
+            <span class="token-comment">
+                * Feel free to reach out if you want to build something together.
+            </span>
+        </div>
+        <div class="line">
+            <span class="token-comment"> */</span>
+        </div>
+        <div class="line"></div>
+        <div class="line">
+            <span class="token-keyword">async function</span>
+            <span class="token-function">connect</span
+            ><span class="token-punctuation">()</span>
+            <span class="token-punctuation">{</span>
+        </div>
+        <div class="line indent">
+            <span class="token-keyword">const</span>
+            <span class="token-variable">channels</span>
+            <span class="token-operator">=</span>
+            <span class="token-punctuation">{</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-property">email</span
+            ><span class="token-operator">:</span>
+            <a href="mailto:your.email@example.com" class="token-string link"
+                >"your.email@example.com"</a
+            ><span class="token-punctuation">,</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-property">github</span
+            ><span class="token-operator">:</span>
+            <a
+                href="https://github.com/YOUR_USERNAME"
+                target="_blank"
+                class="token-string link"
+                >"github.com/YOUR_USERNAME"</a
+            ><span class="token-punctuation">,</span>
+        </div>
+        <div class="line indent2">
+            <span class="token-property">linkedin</span
+            ><span class="token-operator">:</span>
+            <a
+                href="https://linkedin.com/in/YOUR_USERNAME"
+                target="_blank"
+                class="token-string link"
+                >"linkedin.com/in/YOUR_USERNAME"</a
+            >
+        </div>
+        <div class="line indent">
+            <span class="token-punctuation">};</span>
+        </div>
+        <div class="line indent"></div>
+        <div class="line indent">
+            <span class="token-keyword">return</span>
+            <span class="token-keyword">await</span>
+            <span class="token-function">sendMessage</span
+            ><span class="token-punctuation">(</span
+            ><span class="token-variable">channels</span
+            ><span class="token-punctuation">.</span
+            ><span class="token-property">email</span
+            ><span class="token-punctuation">);</span>
+        </div>
+        <div class="line">
+            <span class="token-punctuation">}</span>
+        </div>
+        <div class="line"></div>
+    </section>
+
+    <!-- EOF -->
+    <div class="line">
+        <span class="token-comment">// EOF</span>
+    </div>
+    <div class="line">
+        <span class="token-cursor">|</span>
+    </div>
+</div>
 
                         <!-- README.md content -->
                         <!-- README.md content -->
@@ -1158,11 +1104,10 @@
     <div class="line"></div>
     <div class="line"><span class="token-comment">| Feature | How to Use | Description |</span></div>
     <div class="line"><span class="token-comment">|---------|-----------|-------------|</span></div>
-    <div class="line"><span class="token-comment">| Command Palette | `Ctrl+Shift+K` | Fuzzy search all actions |</span></div>
+    <div class="line"><span class="token-comment">| Command Palette | `Ctrl+Shift+Q` | Fuzzy search all actions |</span></div>
     <div class="line"><span class="token-comment">| Find in File | `Ctrl+F` | Search within current file |</span></div>
-    <div class="line"><span class="token-comment">| File Explorer | `Ctrl+Shift+E` or click 📂 icon | Toggle sidebar with file tree |</span></div>
+    <div class="line"><span class="token-comment">| File Explorer | `Ctrl+Shift+Z` or click 📂 icon | Toggle sidebar with file tree |</span></div>
     <div class="line"><span class="token-comment">| Terminal | `Ctrl+`` or click 💻 icon | Interactive bash-like shell |</span></div>
-    <div class="line"><span class="token-comment">| Minimap | Click 🗺️ icon | Code overview on the right |</span></div>
     <div class="line"><span class="token-comment">| Theme Toggle | Click 🌓 icon or `theme` in terminal | Dark / Light mode |</span></div>
     <div class="line"><span class="token-comment">| Context Menu | Right-click anywhere | Quick actions menu |</span></div>
     <div class="line"><span class="token-comment">| Section Nav | `Ctrl+1` to `Ctrl+4` | Jump to About/Projects/Skills/Contact |</span></div>
@@ -1179,9 +1124,9 @@
     <div class="line"></div>
     <div class="line"><span class="token-comment">| Shortcut | Action |</span></div>
     <div class="line"><span class="token-comment">|----------|--------|</span></div>
-    <div class="line"><span class="token-comment">| `Ctrl+Shift+K` | Open Command Palette |</span></div>
+    <div class="line"><span class="token-comment">| `Ctrl+Shift+Q` | Open Command Palette |</span></div>
     <div class="line"><span class="token-comment">| `Ctrl+F` | Open Find Widget |</span></div>
-    <div class="line"><span class="token-comment">| `Ctrl+Shift+E` | Toggle File Explorer |</span></div>
+    <div class="line"><span class="token-comment">| `Ctrl+Shift+Z` | Toggle File Explorer |</span></div>
     <div class="line"><span class="token-comment">| `Ctrl+`` | Toggle Terminal |</span></div>
     <div class="line"><span class="token-comment">| `Ctrl+1` | Go to About |</span></div>
     <div class="line"><span class="token-comment">| `Ctrl+2` | Go to Projects |</span></div>
@@ -1204,7 +1149,7 @@
     <div class="line"><span class="token-comment">| `skills` | Show tech stack |</span></div>
     <div class="line"><span class="token-comment">| `contact` | Display contact info |</span></div>
     <div class="line"><span class="token-comment">| `theme` | Toggle dark/light mode |</span></div>
-    <div class="line"><span class="token-comment">| `open <section>` | Jump to section (about/projects/skills/contact) |</span></div>
+    <div class="line"><span class="token-comment">| `open &lt;section&gt;` | Jump to section (about/projects/skills/contact) |</span></div>
     <div class="line"><span class="token-comment">| `github` | Open GitHub profile |</span></div>
     <div class="line"><span class="token-comment">| `linkedin` | Open LinkedIn profile |</span></div>
     <div class="line"><span class="token-comment">| `email` | Compose email |</span></div>
@@ -1212,9 +1157,9 @@
     <div class="line"><span class="token-comment">| `pwd` | Print working directory |</span></div>
     <div class="line"><span class="token-comment">| `whoami` | Display current user |</span></div>
     <div class="line"><span class="token-comment">| `date` | Show current date |</span></div>
-    <div class="line"><span class="token-comment">| `echo <msg>` | Print a message |</span></div>
-    <div class="line"><span class="token-comment">| `cat <file>` | View file contents |</span></div>
-    <div class="line"><span class="token-comment">| `cd <dir>` | Change directory |</span></div>
+    <div class="line"><span class="token-comment">| `echo &lt;msg&gt;` | Print a message |</span></div>
+    <div class="line"><span class="token-comment">| `cat &lt;file&gt;` | View file contents |</span></div>
+    <div class="line"><span class="token-comment">| `cd &lt;dir&gt;` | Change directory |</span></div>
     <div class="line"><span class="token-comment">| `clear` | Clear terminal |</span></div>
     <div class="line"></div>
     <div class="line"><span class="token-comment">---</span></div>
@@ -1248,103 +1193,83 @@
 </div>
 
                         <!-- config.json content -->
-                        <div class="code-content" id="configContent">
-                            <div class="line">
-                                <span class="token-punctuation">{</span>
-                            </div>
-                            <div class="line indent">
-                                <span class="token-property">"name"</span
-                                ><span class="token-operator">:</span>
-                                <span class="token-string">"Your Name"</span
-                                ><span class="token-punctuation">,</span>
-                            </div>
-                            <div class="line indent">
-                                <span class="token-property">"version"</span
-                                ><span class="token-operator">:</span>
-                                <span class="token-string">"2.0.0"</span
-                                ><span class="token-punctuation">,</span>
-                            </div>
-                            <div class="line indent">
-                                <span class="token-property">"description"</span
-                                ><span class="token-operator">:</span>
-                                <span class="token-string"
-                                    >"Graduate CS Student Portfolio"</span
-                                ><span class="token-punctuation">,</span>
-                            </div>
-                            <div class="line indent">
-                                <span class="token-property">"theme"</span
-                                ><span class="token-operator">:</span>
-                                <span class="token-string">"dark"</span
-                                ><span class="token-punctuation">,</span>
-                            </div>
-                            <div class="line indent">
-                                <span class="token-property">"features"</span
-                                ><span class="token-operator">:</span>
-                                <span class="token-punctuation">{</span>
-                            </div>
-                            <div class="line indent2">
-                                <span class="token-property"
-                                    >"commandPalette"</span
-                                ><span class="token-operator">:</span>
-                                <span class="token-keyword">true</span
-                                ><span class="token-punctuation">,</span>
-                            </div>
-                            <div class="line indent2">
-                                <span class="token-property">"minimap"</span
-                                ><span class="token-operator">:</span>
-                                <span class="token-keyword">true</span
-                                ><span class="token-punctuation">,</span>
-                            </div>
-                            <div class="line indent2">
-                                <span class="token-property">"terminal"</span
-                                ><span class="token-operator">:</span>
-                                <span class="token-keyword">true</span
-                                ><span class="token-punctuation">,</span>
-                            </div>
-                            <div class="line indent2">
-                                <span class="token-property"
-                                    >"fileExplorer"</span
-                                ><span class="token-operator">:</span>
-                                <span class="token-keyword">true</span>
-                            </div>
-                            <div class="line indent">
-                                <span class="token-punctuation">}</span
-                                ><span class="token-punctuation">,</span>
-                            </div>
-                            <div class="line indent">
-                                <span class="token-property">"social"</span
-                                ><span class="token-operator">:</span>
-                                <span class="token-punctuation">{</span>
-                            </div>
-                            <div class="line indent2">
-                                <span class="token-property">"github"</span
-                                ><span class="token-operator">:</span>
-                                <span class="token-string">"YOUR_USERNAME"</span
-                                ><span class="token-punctuation">,</span>
-                            </div>
-                            <div class="line indent2">
-                                <span class="token-property">"linkedin"</span
-                                ><span class="token-operator">:</span>
-                                <span class="token-string"
-                                    >"YOUR_USERNAME"</span
-                                >
-                            </div>
-                            <div class="line indent">
-                                <span class="token-punctuation">}</span>
-                            </div>
-                            <div class="line">
-                                <span class="token-punctuation">}</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Minimap -->
-                    <div class="minimap" id="minimap">
-                        <div class="minimap-content" id="minimapContent"></div>
-                        <div
-                            class="minimap-viewport"
-                            id="minimapViewport"
-                        ></div>
+<div class="code-content" id="configContent">
+    <div class="line">
+        <span class="token-punctuation">{</span>
+    </div>
+    <div class="line indent">
+        <span class="token-property">"name"</span
+        ><span class="token-operator">:</span>
+        <span class="token-string">"Your Name"</span
+        ><span class="token-punctuation">,</span>
+    </div>
+    <div class="line indent">
+        <span class="token-property">"version"</span
+        ><span class="token-operator">:</span>
+        <span class="token-string">"2.1.0"</span
+        ><span class="token-punctuation">,</span>
+    </div>
+    <div class="line indent">
+        <span class="token-property">"description"</span
+        ><span class="token-operator">:</span>
+        <span class="token-string">"Graduate CS Student Portfolio — Systems &amp; Infrastructure"</span
+        ><span class="token-punctuation">,</span>
+    </div>
+    <div class="line indent">
+        <span class="token-property">"theme"</span
+        ><span class="token-operator">:</span>
+        <span class="token-string">"dark"</span
+        ><span class="token-punctuation">,</span>
+    </div>
+    <div class="line indent">
+        <span class="token-property">"features"</span
+        ><span class="token-operator">:</span>
+        <span class="token-punctuation">{</span>
+    </div>
+    <div class="line indent2">
+        <span class="token-property">"commandPalette"</span
+        ><span class="token-operator">:</span>
+        <span class="token-keyword">true</span
+        ><span class="token-punctuation">,</span>
+    </div>
+    <div class="line indent2">
+        <span class="token-property">"terminal"</span
+        ><span class="token-operator">:</span>
+        <span class="token-keyword">true</span
+        ><span class="token-punctuation">,</span>
+    </div>
+    <div class="line indent2">
+        <span class="token-property">"fileExplorer"</span
+        ><span class="token-operator">:</span>
+        <span class="token-keyword">true</span>
+    </div>
+    <div class="line indent">
+        <span class="token-punctuation">}</span
+        ><span class="token-punctuation">,</span>
+    </div>
+    <div class="line indent">
+        <span class="token-property">"social"</span
+        ><span class="token-operator">:</span>
+        <span class="token-punctuation">{</span>
+    </div>
+    <div class="line indent2">
+        <span class="token-property">"github"</span
+        ><span class="token-operator">:</span>
+        <span class="token-string">"YOUR_USERNAME"</span
+        ><span class="token-punctuation">,</span>
+    </div>
+    <div class="line indent2">
+        <span class="token-property">"linkedin"</span
+        ><span class="token-operator">:</span>
+        <span class="token-string">"YOUR_USERNAME"</span>
+    </div>
+    <div class="line indent">
+        <span class="token-punctuation">}</span>
+    </div>
+    <div class="line">
+        <span class="token-punctuation">}</span>
+    </div>
+</div>
                     </div>
                 </div>
 
