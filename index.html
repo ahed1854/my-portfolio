@@ -1,0 +1,1448 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>portfolio.ts — Your Name</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <!-- Command Palette Overlay -->
+        <div class="command-palette" id="commandPalette">
+            <div class="cp-backdrop"></div>
+            <div class="cp-container">
+                <!-- In the cp-input-wrap div, change the icon: -->
+                <div class="cp-input-wrap">
+                    <span class="cp-icon">⌘⇧K</span>
+                    <input
+                        type="text"
+                        class="cp-input"
+                        id="cpInput"
+                        placeholder="Type a command..."
+                        autocomplete="off"
+                    />
+                </div>
+                <div class="cp-results" id="cpResults"></div>
+            </div>
+        </div>
+
+        <!-- Find Widget -->
+        <div class="find-widget" id="findWidget">
+            <div class="find-row">
+                <input
+                    type="text"
+                    class="find-input"
+                    id="findInput"
+                    placeholder="Find"
+                />
+                <span class="find-count" id="findCount">0/0</span>
+                <button class="find-btn" id="findPrev">↑</button>
+                <button class="find-btn" id="findNext">↓</button>
+                <button class="find-btn close" id="findClose">×</button>
+            </div>
+        </div>
+
+        <!-- Context Menu -->
+        <div class="context-menu" id="contextMenu">
+            <div class="cm-item" data-action="copy">Copy</div>
+            <div class="cm-item" data-action="goto">Go to Definition</div>
+            <div class="cm-separator"></div>
+            <div class="cm-item" data-action="theme">Toggle Theme</div>
+            <div class="cm-item" data-action="palette">Command Palette</div>
+        </div>
+
+        <div class="app">
+            <!-- Activity Bar -->
+            <aside class="activity-bar">
+                <div
+                    class="activity-icon active"
+                    data-section="about"
+                    title="About (Cmd+1)"
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                    </svg>
+                </div>
+                <div
+                    class="activity-icon"
+                    data-section="projects"
+                    title="Projects (Cmd+2)"
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path
+                            d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
+                        />
+                    </svg>
+                </div>
+                <div
+                    class="activity-icon"
+                    data-section="skills"
+                    title="Skills (Cmd+3)"
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <polyline points="16 18 22 12 16 6" />
+                        <polyline points="8 6 2 12 8 18" />
+                    </svg>
+                </div>
+                <div
+                    class="activity-icon"
+                    data-section="contact"
+                    title="Contact (Cmd+4)"
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path
+                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                        />
+                        <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                </div>
+                <div class="activity-spacer"></div>
+                <div
+                    class="activity-icon"
+                    id="toggleExplorer"
+                    title="Toggle Explorer (Cmd+Shift+E)"
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <rect
+                            x="3"
+                            y="3"
+                            width="18"
+                            height="18"
+                            rx="2"
+                            ry="2"
+                        />
+                        <line x1="3" y1="9" x2="21" y2="9" />
+                        <line x1="9" y1="21" x2="9" y2="9" />
+                    </svg>
+                </div>
+                <div
+                    class="activity-icon"
+                    id="toggleTerminal"
+                    title="Toggle Terminal (Ctrl+`)"
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <polyline points="4 17 10 11 4 5" />
+                        <line x1="12" y1="19" x2="20" y2="19" />
+                    </svg>
+                </div>
+                <div
+                    class="activity-icon"
+                    id="toggleMinimap"
+                    title="Toggle Minimap"
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <rect x="3" y="3" width="7" height="7" />
+                        <rect x="14" y="3" width="7" height="7" />
+                        <rect x="14" y="14" width="7" height="7" />
+                        <rect x="3" y="14" width="7" height="7" />
+                    </svg>
+                </div>
+                <div class="activity-spacer"></div>
+                <button
+                    class="activity-icon theme-toggle"
+                    id="themeToggle"
+                    title="Toggle Theme"
+                >
+                    <svg
+                        class="moon"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path
+                            d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                        />
+                    </svg>
+                    <svg
+                        class="sun"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <circle cx="12" cy="12" r="5" />
+                        <line x1="12" y1="1" x2="12" y2="3" />
+                        <line x1="12" y1="21" x2="12" y2="23" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                        <line x1="1" y1="12" x2="3" y2="12" />
+                        <line x1="21" y1="12" x2="23" y2="12" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </svg>
+                </button>
+            </aside>
+
+            <!-- File Explorer Sidebar -->
+            <aside class="explorer" id="explorer">
+                <div class="explorer-header">
+                    <span class="explorer-title">EXPLORER</span>
+                    <button
+                        class="explorer-action"
+                        id="collapseExplorer"
+                        title="Close"
+                    >
+                        ×
+                    </button>
+                </div>
+                <div class="explorer-tree">
+                    <div class="tree-folder open">
+                        <div class="tree-folder-header">
+                            <svg
+                                class="tree-chevron"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2.5"
+                            >
+                                <polyline points="9 18 15 12 9 6" />
+                            </svg>
+                            <span class="tree-label">PORTFOLIO</span>
+                        </div>
+                        <div class="tree-children">
+                            <div class="tree-file active" data-tab="portfolio">
+                                <svg
+                                    class="file-icon"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path
+                                        d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                                    />
+                                    <polyline points="13 2 13 9 20 9" />
+                                </svg>
+                                <span class="file-name">portfolio.ts</span>
+                            </div>
+                            <div class="tree-file" data-tab="readme">
+                                <svg
+                                    class="file-icon"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path
+                                        d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                                    />
+                                    <polyline points="14 2 14 8 20 8" />
+                                    <line x1="16" y1="13" x2="8" y2="13" />
+                                    <line x1="16" y1="17" x2="8" y2="17" />
+                                    <polyline points="10 9 9 9 8 9" />
+                                </svg>
+                                <span class="file-name">README.md</span>
+                            </div>
+                            <div class="tree-file" data-tab="config">
+                                <svg
+                                    class="file-icon"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path
+                                        d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                                    />
+                                    <polyline points="14 2 14 8 20 8" />
+                                    <line x1="16" y1="13" x2="8" y2="13" />
+                                    <line x1="16" y1="17" x2="8" y2="17" />
+                                </svg>
+                                <span class="file-name">config.json</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tree-folder">
+                        <div class="tree-folder-header">
+                            <svg
+                                class="tree-chevron"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2.5"
+                            >
+                                <polyline points="9 18 15 12 9 6" />
+                            </svg>
+                            <span class="tree-label">src</span>
+                        </div>
+                        <div class="tree-children collapsed">
+                            <div class="tree-file">
+                                <svg
+                                    class="file-icon"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path
+                                        d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                                    />
+                                    <polyline points="13 2 13 9 20 9" />
+                                </svg>
+                                <span class="file-name">about.ts</span>
+                            </div>
+                            <div class="tree-file">
+                                <svg
+                                    class="file-icon"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path
+                                        d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                                    />
+                                    <polyline points="13 2 13 9 20 9" />
+                                </svg>
+                                <span class="file-name">projects.ts</span>
+                            </div>
+                            <div class="tree-file">
+                                <svg
+                                    class="file-icon"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path
+                                        d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                                    />
+                                    <polyline points="13 2 13 9 20 9" />
+                                </svg>
+                                <span class="file-name">skills.ts</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tree-folder">
+                        <div class="tree-folder-header">
+                            <svg
+                                class="tree-chevron"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2.5"
+                            >
+                                <polyline points="9 18 15 12 9 6" />
+                            </svg>
+                            <span class="tree-label">assets</span>
+                        </div>
+                        <div class="tree-children collapsed">
+                            <div class="tree-file">
+                                <svg
+                                    class="file-icon"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <rect
+                                        x="3"
+                                        y="3"
+                                        width="18"
+                                        height="18"
+                                        rx="2"
+                                        ry="2"
+                                    />
+                                    <circle cx="8.5" cy="8.5" r="1.5" />
+                                    <polyline points="21 15 16 10 5 21" />
+                                </svg>
+                                <span class="file-name">avatar.png</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Editor Area -->
+            <main class="main" id="mainArea">
+                <!-- Tab Bar -->
+                <div class="tab-bar">
+                    <div class="tab active" data-tab="portfolio">
+                        <span class="tab-icon">TS</span>
+                        <span class="tab-name">portfolio.ts</span>
+                        <span class="tab-close">×</span>
+                    </div>
+                    <div class="tab" data-tab="readme">
+                        <span class="tab-icon">MD</span>
+                        <span class="tab-name">README.md</span>
+                        <span class="tab-close">×</span>
+                    </div>
+                    <div class="tab" data-tab="config">
+                        <span class="tab-icon">JSON</span>
+                        <span class="tab-name">config.json</span>
+                        <span class="tab-close">×</span>
+                    </div>
+                </div>
+
+                <!-- Breadcrumb -->
+                <div class="breadcrumb">
+                    <span class="bc-root">src</span>
+                    <span class="bc-sep">›</span>
+                    <span class="bc-dir">portfolio</span>
+                    <span class="bc-sep">›</span>
+                    <span class="bc-file" id="bcFile">portfolio.ts</span>
+                </div>
+
+                <!-- Editor Content -->
+                <div class="editor-wrapper">
+                    <div class="editor" id="editor">
+                        <!-- portfolio.ts content -->
+                        <div class="code-content active" id="portfolioContent">
+                            <!-- File Header -->
+                            <div class="line">
+                                <span class="token-comment"
+                                    >//
+                                    ============================================================</span
+                                >
+                            </div>
+                            <div class="line">
+                                <span class="token-comment"
+                                    >//
+                                    <span class="hero-title"
+                                        >PORTFOLIO.TS</span
+                                    ></span
+                                >
+                            </div>
+                            <div class="line">
+                                <span class="token-comment"
+                                    >// Graduate Computer Science Student</span
+                                >
+                            </div>
+                            <div class="line">
+                                <span class="token-comment"
+                                    >//
+                                    ============================================================</span
+                                >
+                            </div>
+                            <div class="line"></div>
+
+                            <!-- Imports -->
+                            <div class="line">
+                                <span class="token-keyword">import</span>
+                                <span class="token-punctuation">{</span>
+                                <span class="token-variable">Life</span
+                                ><span class="token-punctuation">,</span>
+                                <span class="token-variable">Code</span
+                                ><span class="token-punctuation">,</span>
+                                <span class="token-variable">Coffee</span>
+                                <span class="token-punctuation">}</span>
+                                <span class="token-keyword">from</span>
+                                <span class="token-string">'essentials'</span
+                                ><span class="token-punctuation">;</span>
+                            </div>
+                            <div class="line"></div>
+
+                            <!-- About Section -->
+                            <section class="code-section" id="about">
+                                <div class="line">
+                                    <span class="token-comment">/**</span>
+                                </div>
+                                <div class="line">
+                                    <span class="token-comment">
+                                        *
+                                        <span class="section-heading"
+                                            >@section About</span
+                                        ></span
+                                    >
+                                </div>
+                                <div class="line">
+                                    <span class="token-comment">
+                                        *
+                                        <span class="section-heading"
+                                            >@author Your Name</span
+                                        ></span
+                                    >
+                                </div>
+                                <div class="line">
+                                    <span class="token-comment"> */</span>
+                                </div>
+                                <div class="line"></div>
+                                <div class="line">
+                                    <span class="token-keyword">const</span>
+                                    <span class="token-variable"
+                                        >developer</span
+                                    >
+                                    <span class="token-operator">=</span>
+                                    <span class="token-punctuation">{</span>
+                                </div>
+
+                                <div class="line indent">
+                                    <span class="token-property">name</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-string hero-name"
+                                        >"Your Name"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-property">role</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-string"
+                                        >"Graduate CS Student"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-property">location</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-string"
+                                        >"Your City, Country"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-property">interests</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-punctuation">[</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-string"
+                                        >"Distributed Systems"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-string"
+                                        >"Machine Learning"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-string"
+                                        >"Systems Programming"</span
+                                    >
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-punctuation">],</span>
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-property">currently</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-string"
+                                        >"Seeking Summer 2025
+                                        Opportunities"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-property">links</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-punctuation">{</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">github</span
+                                    ><span class="token-operator">:</span>
+                                    <a
+                                        href="https://github.com/YOUR_USERNAME"
+                                        target="_blank"
+                                        class="token-string link"
+                                        >"github.com/YOUR_USERNAME"</a
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">linkedin</span
+                                    ><span class="token-operator">:</span>
+                                    <a
+                                        href="https://linkedin.com/in/YOUR_USERNAME"
+                                        target="_blank"
+                                        class="token-string link"
+                                        >"linkedin.com/in/YOUR_USERNAME"</a
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">email</span
+                                    ><span class="token-operator">:</span>
+                                    <a
+                                        href="mailto:your.email@example.com"
+                                        class="token-string link"
+                                        >"your.email@example.com"</a
+                                    >
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-punctuation">}</span>
+                                </div>
+                                <div class="line">
+                                    <span class="token-punctuation">};</span>
+                                </div>
+                                <div class="line"></div>
+                            </section>
+
+                            <!-- Projects Section -->
+                            <section class="code-section" id="projects">
+                                <div class="line">
+                                    <span class="token-comment"
+                                        >//
+                                        ------------------------------------------------------------</span
+                                    >
+                                </div>
+                                <div class="line">
+                                    <span class="token-comment"
+                                        >//
+                                        <span class="section-heading"
+                                            >Section: Projects</span
+                                        ></span
+                                    >
+                                </div>
+                                <div class="line">
+                                    <span class="token-comment"
+                                        >//
+                                        ------------------------------------------------------------</span
+                                    >
+                                </div>
+                                <div class="line"></div>
+                                <div class="line">
+                                    <span class="token-keyword">interface</span>
+                                    <span class="token-function">Project</span>
+                                    <span class="token-punctuation">{</span>
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-property">name</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-type">string</span
+                                    ><span class="token-punctuation">;</span>
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-property"
+                                        >description</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-type">string</span
+                                    ><span class="token-punctuation">;</span>
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-property">tech</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-type">string</span
+                                    ><span class="token-punctuation">[];</span>
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-property">links</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-punctuation">{</span>
+                                    <span class="token-property">source</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-type">string</span
+                                    ><span class="token-punctuation">;</span>
+                                    <span class="token-property">demo</span
+                                    ><span class="token-operator">?:</span>
+                                    <span class="token-type">string</span>
+                                    <span class="token-punctuation">};</span>
+                                </div>
+                                <div class="line">
+                                    <span class="token-punctuation">}</span>
+                                </div>
+                                <div class="line"></div>
+                                <div class="line">
+                                    <span class="token-keyword">const</span>
+                                    <span class="token-variable">projects</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-type">Project</span
+                                    ><span class="token-punctuation">[]</span>
+                                    <span class="token-operator">=</span>
+                                    <span class="token-punctuation">[</span>
+                                </div>
+
+                                <!-- Project 1 -->
+                                <div class="line indent">
+                                    <span class="token-punctuation">{</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">name</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-string project-name"
+                                        >"Distributed Task Queue"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property"
+                                        >description</span
+                                    ><span class="token-operator">:</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-string"
+                                        >"Fault-tolerant distributed task queue
+                                        built with Go and Redis. Features
+                                        automatic retries, priority scheduling,
+                                        and horizontal scaling via
+                                        Kubernetes."</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">tech</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-punctuation">[</span
+                                    ><span class="token-string">"Go"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string">"Redis"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string">"Docker"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string">"gRPC"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string"
+                                        >"Kubernetes"</span
+                                    ><span class="token-punctuation">],</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">links</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-punctuation">{</span>
+                                </div>
+                                <div class="line indent3">
+                                    <span class="token-property">source</span
+                                    ><span class="token-operator">:</span>
+                                    <a
+                                        href="#"
+                                        target="_blank"
+                                        class="token-string link"
+                                        >"github.com/.../task-queue"</a
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent3">
+                                    <span class="token-property">demo</span
+                                    ><span class="token-operator">:</span>
+                                    <a
+                                        href="#"
+                                        target="_blank"
+                                        class="token-string link"
+                                        >"demo.taskqueue.dev"</a
+                                    >
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-punctuation">}</span>
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-punctuation">},</span>
+                                </div>
+                                <div class="line"></div>
+
+                                <!-- Project 2 -->
+                                <div class="line indent">
+                                    <span class="token-punctuation">{</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">name</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-string project-name"
+                                        >"ML Pipeline Framework"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property"
+                                        >description</span
+                                    ><span class="token-operator">:</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-string"
+                                        >"End-to-end ML pipeline with automated
+                                        feature engineering, model selection,
+                                        and deployment. Reduced model deployment
+                                        time by 80%."</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">tech</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-punctuation">[</span
+                                    ><span class="token-string">"Python"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string">"PyTorch"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string">"MLflow"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string"
+                                        >"Kubernetes"</span
+                                    ><span class="token-punctuation">],</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">links</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-punctuation">{</span>
+                                </div>
+                                <div class="line indent3">
+                                    <span class="token-property">source</span
+                                    ><span class="token-operator">:</span>
+                                    <a
+                                        href="#"
+                                        target="_blank"
+                                        class="token-string link"
+                                        >"github.com/.../ml-pipe"</a
+                                    >
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-punctuation">}</span>
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-punctuation">},</span>
+                                </div>
+                                <div class="line"></div>
+
+                                <!-- Project 3 -->
+                                <div class="line indent">
+                                    <span class="token-punctuation">{</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">name</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-string project-name"
+                                        >"Real-time Collaborative Editor"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property"
+                                        >description</span
+                                    ><span class="token-operator">:</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-string"
+                                        >"CRDT-based collaborative editor with
+                                        WebRTC peer-to-peer sync. Supports 100+
+                                        concurrent users with sub-50ms
+                                        latency."</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">tech</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-punctuation">[</span
+                                    ><span class="token-string"
+                                        >"TypeScript"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string">"WebRTC"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string">"Yjs"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string">"Node.js"</span
+                                    ><span class="token-punctuation">],</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">links</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-punctuation">{</span>
+                                </div>
+                                <div class="line indent3">
+                                    <span class="token-property">source</span
+                                    ><span class="token-operator">:</span>
+                                    <a
+                                        href="#"
+                                        target="_blank"
+                                        class="token-string link"
+                                        >"github.com/.../collab-editor"</a
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent3">
+                                    <span class="token-property">demo</span
+                                    ><span class="token-operator">:</span>
+                                    <a
+                                        href="#"
+                                        target="_blank"
+                                        class="token-string link"
+                                        >"collab.dev"</a
+                                    >
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-punctuation">}</span>
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-punctuation">}</span>
+                                </div>
+
+                                <div class="line">
+                                    <span class="token-punctuation">];</span>
+                                </div>
+                                <div class="line"></div>
+                            </section>
+
+                            <!-- Skills Section -->
+                            <section class="code-section" id="skills">
+                                <div class="line">
+                                    <span class="token-comment"
+                                        >//
+                                        ------------------------------------------------------------</span
+                                    >
+                                </div>
+                                <div class="line">
+                                    <span class="token-comment"
+                                        >//
+                                        <span class="section-heading"
+                                            >Section: Skills</span
+                                        ></span
+                                    >
+                                </div>
+                                <div class="line">
+                                    <span class="token-comment"
+                                        >//
+                                        ------------------------------------------------------------</span
+                                    >
+                                </div>
+                                <div class="line"></div>
+                                <div class="line">
+                                    <span class="token-keyword">const</span>
+                                    <span class="token-variable">skills</span>
+                                    <span class="token-operator">=</span>
+                                    <span class="token-punctuation">{</span>
+                                </div>
+
+                                <div class="line indent">
+                                    <span class="token-property">languages</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-punctuation">[</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-string skill-tag"
+                                        >"Python"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string skill-tag"
+                                        >"Go"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string skill-tag"
+                                        >"C++"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string skill-tag"
+                                        >"TypeScript"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string skill-tag"
+                                        >"Rust"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string skill-tag"
+                                        >"SQL"</span
+                                    >
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-punctuation">],</span>
+                                </div>
+
+                                <div class="line indent">
+                                    <span class="token-property"
+                                        >frameworks</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-punctuation">[</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-string skill-tag"
+                                        >"PyTorch"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string skill-tag"
+                                        >"TensorFlow"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string skill-tag"
+                                        >"React"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string skill-tag"
+                                        >"Node.js"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string skill-tag"
+                                        >"gRPC"</span
+                                    >
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-punctuation">],</span>
+                                </div>
+
+                                <div class="line indent">
+                                    <span class="token-property">tools</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-punctuation">[</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-string skill-tag"
+                                        >"Docker"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string skill-tag"
+                                        >"Kubernetes"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string skill-tag"
+                                        >"AWS"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string skill-tag"
+                                        >"Git"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string skill-tag"
+                                        >"Linux"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string skill-tag"
+                                        >"Redis"</span
+                                    >
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-punctuation">]</span>
+                                </div>
+
+                                <div class="line">
+                                    <span class="token-punctuation">};</span>
+                                </div>
+                                <div class="line"></div>
+                            </section>
+
+                            <!-- Contact Section -->
+                            <section class="code-section" id="contact">
+                                <div class="line">
+                                    <span class="token-comment"
+                                        >//
+                                        ------------------------------------------------------------</span
+                                    >
+                                </div>
+                                <div class="line">
+                                    <span class="token-comment"
+                                        >//
+                                        <span class="section-heading"
+                                            >Section: Contact</span
+                                        ></span
+                                    >
+                                </div>
+                                <div class="line">
+                                    <span class="token-comment"
+                                        >//
+                                        ------------------------------------------------------------</span
+                                    >
+                                </div>
+                                <div class="line"></div>
+                                <div class="line">
+                                    <span class="token-comment">/**</span>
+                                </div>
+                                <div class="line">
+                                    <span class="token-comment">
+                                        * I'm currently open to new
+                                        opportunities and collaborations.</span
+                                    >
+                                </div>
+                                <div class="line">
+                                    <span class="token-comment">
+                                        * Feel free to reach out if you want to
+                                        build something together.</span
+                                    >
+                                </div>
+                                <div class="line">
+                                    <span class="token-comment"> */</span>
+                                </div>
+                                <div class="line"></div>
+                                <div class="line">
+                                    <span class="token-keyword"
+                                        >async function</span
+                                    >
+                                    <span class="token-function">connect</span
+                                    ><span class="token-punctuation">()</span>
+                                    <span class="token-punctuation">{</span>
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-keyword">const</span>
+                                    <span class="token-variable">channels</span>
+                                    <span class="token-operator">=</span>
+                                    <span class="token-punctuation">{</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">email</span
+                                    ><span class="token-operator">:</span>
+                                    <a
+                                        href="mailto:your.email@example.com"
+                                        class="token-string link"
+                                        >"your.email@example.com"</a
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">github</span
+                                    ><span class="token-operator">:</span>
+                                    <a
+                                        href="https://github.com/YOUR_USERNAME"
+                                        target="_blank"
+                                        class="token-string link"
+                                        >"github.com/YOUR_USERNAME"</a
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">linkedin</span
+                                    ><span class="token-operator">:</span>
+                                    <a
+                                        href="https://linkedin.com/in/YOUR_USERNAME"
+                                        target="_blank"
+                                        class="token-string link"
+                                        >"linkedin.com/in/YOUR_USERNAME"</a
+                                    >
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-punctuation">};</span>
+                                </div>
+                                <div class="line indent"></div>
+                                <div class="line indent">
+                                    <span class="token-keyword">return</span>
+                                    <span class="token-keyword">await</span>
+                                    <span class="token-function"
+                                        >sendMessage</span
+                                    ><span class="token-punctuation">(</span
+                                    ><span class="token-variable">channels</span
+                                    ><span class="token-punctuation">.</span
+                                    ><span class="token-property">email</span
+                                    ><span class="token-punctuation">);</span>
+                                </div>
+                                <div class="line">
+                                    <span class="token-punctuation">}</span>
+                                </div>
+                                <div class="line"></div>
+                            </section>
+
+                            <!-- EOF -->
+                            <div class="line">
+                                <span class="token-comment">// EOF</span>
+                            </div>
+                            <div class="line">
+                                <span class="token-cursor">|</span>
+                            </div>
+                        </div>
+
+                        <!-- README.md content -->
+                        <!-- README.md content -->
+<div class="code-content" id="readmeContent">
+    <div class="line"><span class="token-comment"># Your Name — Portfolio</span></div>
+    <div class="line"></div>
+    <div class="line"><span class="token-comment">## 🚀 Quick Start</span></div>
+    <div class="line"></div>
+    <div class="line"><span class="token-comment">```bash</span></div>
+    <div class="line"><span class="token-comment"># Run locally</span></div>
+    <div class="line"><span class="token-comment">python -m http.server 8000</span></div>
+    <div class="line"><span class="token-comment"># Then open http://localhost:8000</span></div>
+    <div class="line"><span class="token-comment">```</span></div>
+    <div class="line"></div>
+    <div class="line"><span class="token-comment">---</span></div>
+    <div class="line"></div>
+    <div class="line"><span class="token-comment">## 🎮 Interactive Features</span></div>
+    <div class="line"></div>
+    <div class="line"><span class="token-comment">| Feature | How to Use | Description |</span></div>
+    <div class="line"><span class="token-comment">|---------|-----------|-------------|</span></div>
+    <div class="line"><span class="token-comment">| Command Palette | `Ctrl+Shift+K` | Fuzzy search all actions |</span></div>
+    <div class="line"><span class="token-comment">| Find in File | `Ctrl+F` | Search within current file |</span></div>
+    <div class="line"><span class="token-comment">| File Explorer | `Ctrl+Shift+E` or click 📂 icon | Toggle sidebar with file tree |</span></div>
+    <div class="line"><span class="token-comment">| Terminal | `Ctrl+`` or click 💻 icon | Interactive bash-like shell |</span></div>
+    <div class="line"><span class="token-comment">| Minimap | Click 🗺️ icon | Code overview on the right |</span></div>
+    <div class="line"><span class="token-comment">| Theme Toggle | Click 🌓 icon or `theme` in terminal | Dark / Light mode |</span></div>
+    <div class="line"><span class="token-comment">| Context Menu | Right-click anywhere | Quick actions menu |</span></div>
+    <div class="line"><span class="token-comment">| Section Nav | `Ctrl+1` to `Ctrl+4` | Jump to About/Projects/Skills/Contact |</span></div>
+    <div class="line"><span class="token-comment">| Tab Switching | Click tabs or file explorer | Switch between files |</span></div>
+    <div class="line"><span class="token-comment">| Tooltips | Hover over code tokens | See type info |</span></div>
+    <div class="line"><span class="token-comment">| Git Diff Gutter | Green/yellow line indicators | Shows "modified" lines |</span></div>
+    <div class="line"><span class="token-comment">| Active Line | Highlighted line number | Follows your scroll position |</span></div>
+    <div class="line"><span class="token-comment">| Breadcrumbs | Clickable path bar | Navigate file structure |</span></div>
+    <div class="line"><span class="token-comment">| Status Bar | Bottom info bar | Line, language, time, git status |</span></div>
+    <div class="line"></div>
+    <div class="line"><span class="token-comment">---</span></div>
+    <div class="line"></div>
+    <div class="line"><span class="token-comment">## ⌨️ Keyboard Shortcuts</span></div>
+    <div class="line"></div>
+    <div class="line"><span class="token-comment">| Shortcut | Action |</span></div>
+    <div class="line"><span class="token-comment">|----------|--------|</span></div>
+    <div class="line"><span class="token-comment">| `Ctrl+Shift+K` | Open Command Palette |</span></div>
+    <div class="line"><span class="token-comment">| `Ctrl+F` | Open Find Widget |</span></div>
+    <div class="line"><span class="token-comment">| `Ctrl+Shift+E` | Toggle File Explorer |</span></div>
+    <div class="line"><span class="token-comment">| `Ctrl+`` | Toggle Terminal |</span></div>
+    <div class="line"><span class="token-comment">| `Ctrl+1` | Go to About |</span></div>
+    <div class="line"><span class="token-comment">| `Ctrl+2` | Go to Projects |</span></div>
+    <div class="line"><span class="token-comment">| `Ctrl+3` | Go to Skills |</span></div>
+    <div class="line"><span class="token-comment">| `Ctrl+4` | Go to Contact |</span></div>
+    <div class="line"><span class="token-comment">| `Escape` | Close overlays |</span></div>
+    <div class="line"><span class="token-comment">| `↑ / ↓` in terminal | Command history |</span></div>
+    <div class="line"><span class="token-comment">| `Tab` in terminal | Auto-complete commands |</span></div>
+    <div class="line"><span class="token-comment">| `Ctrl+L` in terminal | Clear terminal |</span></div>
+    <div class="line"></div>
+    <div class="line"><span class="token-comment">---</span></div>
+    <div class="line"></div>
+    <div class="line"><span class="token-comment">## 🖥️ Terminal Commands</span></div>
+    <div class="line"></div>
+    <div class="line"><span class="token-comment">| Command | Description |</span></div>
+    <div class="line"><span class="token-comment">|---------|-------------|</span></div>
+    <div class="line"><span class="token-comment">| `help` | List all commands |</span></div>
+    <div class="line"><span class="token-comment">| `about` | Show bio info |</span></div>
+    <div class="line"><span class="token-comment">| `projects` | List projects |</span></div>
+    <div class="line"><span class="token-comment">| `skills` | Show tech stack |</span></div>
+    <div class="line"><span class="token-comment">| `contact` | Display contact info |</span></div>
+    <div class="line"><span class="token-comment">| `theme` | Toggle dark/light mode |</span></div>
+    <div class="line"><span class="token-comment">| `open <section>` | Jump to section (about/projects/skills/contact) |</span></div>
+    <div class="line"><span class="token-comment">| `github` | Open GitHub profile |</span></div>
+    <div class="line"><span class="token-comment">| `linkedin` | Open LinkedIn profile |</span></div>
+    <div class="line"><span class="token-comment">| `email` | Compose email |</span></div>
+    <div class="line"><span class="token-comment">| `ls` | List files |</span></div>
+    <div class="line"><span class="token-comment">| `pwd` | Print working directory |</span></div>
+    <div class="line"><span class="token-comment">| `whoami` | Display current user |</span></div>
+    <div class="line"><span class="token-comment">| `date` | Show current date |</span></div>
+    <div class="line"><span class="token-comment">| `echo <msg>` | Print a message |</span></div>
+    <div class="line"><span class="token-comment">| `cat <file>` | View file contents |</span></div>
+    <div class="line"><span class="token-comment">| `cd <dir>` | Change directory |</span></div>
+    <div class="line"><span class="token-comment">| `clear` | Clear terminal |</span></div>
+    <div class="line"></div>
+    <div class="line"><span class="token-comment">---</span></div>
+    <div class="line"></div>
+    <div class="line"><span class="token-comment">## 🎨 Customization</span></div>
+    <div class="line"></div>
+    <div class="line"><span class="token-comment">| What | Where |</span></div>
+    <div class="line"><span class="token-comment">|------|-------|</span></div>
+    <div class="line"><span class="token-comment">| Your Name | `<span class="token-string hero-name">` in portfolio.ts |</span></div>
+    <div class="line"><span class="token-comment">| Links | Replace YOUR_USERNAME and emails |</span></div>
+    <div class="line"><span class="token-comment">| Projects | Edit `projects` array in portfolio.ts |</span></div>
+    <div class="line"><span class="token-comment">| Skills | Modify `skills` object in portfolio.ts |</span></div>
+    <div class="line"><span class="token-comment">| Colors | CSS variables in `:root` and `[data-theme="light"]` |</span></div>
+    <div class="line"><span class="token-comment">| Shortcuts | `script.js` — Keyboard Shortcuts section |</span></div>
+    <div class="line"></div>
+    <div class="line"><span class="token-comment">---</span></div>
+    <div class="line"></div>
+    <div class="line"><span class="token-comment">## 📁 File Structure</span></div>
+    <div class="line"></div>
+    <div class="line"><span class="token-comment">```</span></div>
+    <div class="line"><span class="token-comment">portfolio/</span></div>
+    <div class="line"><span class="token-comment">├── index.html    # Structure + content as "code"</span></div>
+    <div class="line"><span class="token-comment">├── styles.css    # IDE chrome, syntax colors, layout</span></div>
+    <div class="line"><span class="token-comment">├── script.js     # Theme, tabs, navigation, terminal, palette</span></div>
+    <div class="line"><span class="token-comment">└── README.md     # This file</span></div>
+    <div class="line"><span class="token-comment">```</span></div>
+    <div class="line"></div>
+    <div class="line"><span class="token-comment">---</span></div>
+    <div class="line"></div>
+    <div class="line"><span class="token-comment">*Built with code and coffee. ☕*</span></div>
+</div>
+
+                        <!-- config.json content -->
+                        <div class="code-content" id="configContent">
+                            <div class="line">
+                                <span class="token-punctuation">{</span>
+                            </div>
+                            <div class="line indent">
+                                <span class="token-property">"name"</span
+                                ><span class="token-operator">:</span>
+                                <span class="token-string">"Your Name"</span
+                                ><span class="token-punctuation">,</span>
+                            </div>
+                            <div class="line indent">
+                                <span class="token-property">"version"</span
+                                ><span class="token-operator">:</span>
+                                <span class="token-string">"2.0.0"</span
+                                ><span class="token-punctuation">,</span>
+                            </div>
+                            <div class="line indent">
+                                <span class="token-property">"description"</span
+                                ><span class="token-operator">:</span>
+                                <span class="token-string"
+                                    >"Graduate CS Student Portfolio"</span
+                                ><span class="token-punctuation">,</span>
+                            </div>
+                            <div class="line indent">
+                                <span class="token-property">"theme"</span
+                                ><span class="token-operator">:</span>
+                                <span class="token-string">"dark"</span
+                                ><span class="token-punctuation">,</span>
+                            </div>
+                            <div class="line indent">
+                                <span class="token-property">"features"</span
+                                ><span class="token-operator">:</span>
+                                <span class="token-punctuation">{</span>
+                            </div>
+                            <div class="line indent2">
+                                <span class="token-property"
+                                    >"commandPalette"</span
+                                ><span class="token-operator">:</span>
+                                <span class="token-keyword">true</span
+                                ><span class="token-punctuation">,</span>
+                            </div>
+                            <div class="line indent2">
+                                <span class="token-property">"minimap"</span
+                                ><span class="token-operator">:</span>
+                                <span class="token-keyword">true</span
+                                ><span class="token-punctuation">,</span>
+                            </div>
+                            <div class="line indent2">
+                                <span class="token-property">"terminal"</span
+                                ><span class="token-operator">:</span>
+                                <span class="token-keyword">true</span
+                                ><span class="token-punctuation">,</span>
+                            </div>
+                            <div class="line indent2">
+                                <span class="token-property"
+                                    >"fileExplorer"</span
+                                ><span class="token-operator">:</span>
+                                <span class="token-keyword">true</span>
+                            </div>
+                            <div class="line indent">
+                                <span class="token-punctuation">}</span
+                                ><span class="token-punctuation">,</span>
+                            </div>
+                            <div class="line indent">
+                                <span class="token-property">"social"</span
+                                ><span class="token-operator">:</span>
+                                <span class="token-punctuation">{</span>
+                            </div>
+                            <div class="line indent2">
+                                <span class="token-property">"github"</span
+                                ><span class="token-operator">:</span>
+                                <span class="token-string">"YOUR_USERNAME"</span
+                                ><span class="token-punctuation">,</span>
+                            </div>
+                            <div class="line indent2">
+                                <span class="token-property">"linkedin"</span
+                                ><span class="token-operator">:</span>
+                                <span class="token-string"
+                                    >"YOUR_USERNAME"</span
+                                >
+                            </div>
+                            <div class="line indent">
+                                <span class="token-punctuation">}</span>
+                            </div>
+                            <div class="line">
+                                <span class="token-punctuation">}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Minimap -->
+                    <div class="minimap" id="minimap">
+                        <div class="minimap-content" id="minimapContent"></div>
+                        <div
+                            class="minimap-viewport"
+                            id="minimapViewport"
+                        ></div>
+                    </div>
+                </div>
+
+                <!-- Terminal Panel -->
+                <div class="terminal" id="terminal">
+                    <div class="terminal-header">
+                        <span class="terminal-title">TERMINAL</span>
+                        <div class="terminal-tabs">
+                            <span class="terminal-tab active">bash</span>
+                            <span class="terminal-tab">Output</span>
+                            <span class="terminal-tab">Problems</span>
+                        </div>
+                        <div class="terminal-actions">
+                            <button
+                                class="terminal-action"
+                                id="maximizeTerminal"
+                                title="Maximize"
+                            >
+                                □
+                            </button>
+                            <button
+                                class="terminal-action"
+                                id="closeTerminal"
+                                title="Close"
+                            >
+                                ×
+                            </button>
+                        </div>
+                    </div>
+                    <div class="terminal-body" id="terminalBody">
+                        <div class="terminal-line terminal-welcome">
+                            <span class="terminal-output"
+                                >Portfolio Terminal v1.0 — Type 'help' for
+                                available commands</span
+                            >
+                        </div>
+                    </div>
+                    <div class="terminal-input-line" id="terminalInputLine">
+                        <span class="terminal-prompt"
+                            >your-name@portfolio:~$</span
+                        >
+                        <input
+                            type="text"
+                            class="terminal-input"
+                            id="terminalInput"
+                            autocomplete="off"
+                            spellcheck="false"
+                        />
+                    </div>
+                </div>
+            </main>
+
+            <!-- Status Bar -->
+            <footer class="status-bar">
+                <div class="status-left">
+                    <span class="status-item branch">
+                        <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2.5"
+                        >
+                            <circle cx="12" cy="18" r="3" />
+                            <circle cx="6" cy="6" r="3" />
+                            <circle cx="18" cy="6" r="3" />
+                            <path d="M6 9v3a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V9" />
+                        </svg>
+                        main*
+                    </span>
+                    <span class="status-item" id="cursorPos">Ln 12, Col 1</span>
+                    <span class="status-item" id="gitChanges">0 changes</span>
+                </div>
+                <div class="status-right">
+                    <span class="status-item">UTF-8</span>
+                    <span class="status-item" id="langIndicator"
+                        >TypeScript</span
+                    >
+                    <span class="status-item">Prettier</span>
+                    <span class="status-item" id="clock">15:39</span>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Mobile Nav -->
+        <nav class="mobile-nav">
+            <button class="mobile-btn active" data-section="about">
+                About
+            </button>
+            <button class="mobile-btn" data-section="projects">Projects</button>
+            <button class="mobile-btn" data-section="skills">Skills</button>
+            <button class="mobile-btn" data-section="contact">Contact</button>
+        </nav>
+
+        <!-- Tooltip -->
+        <div class="tooltip" id="tooltip"></div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
