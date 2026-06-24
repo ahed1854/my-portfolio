@@ -180,7 +180,6 @@ const closeTerminal = document.getElementById("closeTerminal");
 const maximizeTerminal = document.getElementById("maximizeTerminal");
 const terminalBody = document.getElementById("terminalBody");
 const terminalInput = document.getElementById("terminalInput");
-const terminalInputLine = document.getElementById("terminalInputLine");
 
 toggleTerminal.addEventListener("click", () => {
     terminal.classList.toggle("active");
@@ -227,41 +226,39 @@ const terminalCommands = {
     }),
 
     about: () => ({
-        output: `Name: Your Name
-Role: Graduate CS Student
-Location: Your City, Country
-Status: Seeking Summer 2025 Opportunities
-Currently: Building cool things`,
+        output: `Name: Ahed Shammas
+Role: Junior Software Developer
+Location: Tartus, Syria
+Status: Fullstack Web Developer Trainee at Bytes4Future
+Currently: Building web applications with Laravel & PHP`,
         type: "success",
     }),
 
     projects: () => ({
         output: `📁 Projects/
 
-  1. Distributed Task Queue
-     └─ Go, Redis, Docker, gRPC, Kubernetes
+  1. Lara Notes (2025)
+     └─ Laravel notes app with authentication and CRUD operations.
      
-  2. ML Pipeline Framework
-     └─ Python, PyTorch, MLflow, Kubernetes
-     
-  3. Real-time Collaborative Editor
-     └─ TypeScript, WebRTC, Yjs, Node.js`,
+  2. My School Hub (2023-2024)
+     └─ Responsive school website with login functionality.`,
         type: "success",
     }),
 
     skills: () => ({
-        output: `Languages:   Python, Go, C++, TypeScript, Rust, SQL
-Frameworks:  PyTorch, TensorFlow, React, Node.js, gRPC
-Tools:       Docker, Kubernetes, AWS, Git, Linux, Redis`,
+        output: `Languages:   HTML, CSS, JavaScript, PHP, SQL
+Frameworks:  Laravel, Bootstrap
+Tools:       Git, GitHub, VS Code, MySQL`,
         type: "success",
     }),
 
     contact: () => ({
-        output: `Email:    your.email@example.com
-GitHub:   github.com/YOUR_USERNAME
-LinkedIn: linkedin.com/in/YOUR_USERNAME
+        output: `Email:    ahedshammas@gmail.com
+GitHub:   github.com/ahed1854
+LinkedIn: linkedin.com/in/ahed1854
+Twitter:  x.com/Ahed1854
 
-Tip: Use 'github' or 'linkedin' command to open directly.`,
+Tip: Use 'github', 'linkedin', or 'email' command to open directly.`,
         type: "success",
     }),
 
@@ -281,12 +278,12 @@ Tip: Use 'github' or 'linkedin' command to open directly.`,
     }),
 
     pwd: () => ({
-        output: `/home/your-name/portfolio${currentDir === "~" ? "" : "/" + currentDir}`,
+        output: `/home/ahed/portfolio${currentDir === "~" ? "" : "/" + currentDir}`,
         type: "info",
     }),
 
     whoami: () => ({
-        output: `your-name (Graduate CS Student)`,
+        output: `ahed (Junior Software Developer)`,
         type: "info",
     }),
 
@@ -304,8 +301,8 @@ Tip: Use 'github' or 'linkedin' command to open directly.`,
         const file = args[0];
         const files = {
             "portfolio.ts": "// See editor tab above",
-            "README.md": "# Your Name\n\nCS Graduate Student",
-            "config.json": '{"theme": "dark", "version": "2.0.0"}',
+            "README.md": "# Ahed Shammas\n\nJunior Software Developer",
+            "config.json": '{"name": "Ahed Shammas", "version": "2.1.0"}',
             "welcome.txt": "Welcome to my portfolio!",
         };
         return {
@@ -342,17 +339,17 @@ Tip: Use 'github' or 'linkedin' command to open directly.`,
     },
 
     github: () => {
-        window.open("https://github.com/YOUR_USERNAME", "_blank");
+        window.open("https://github.com/ahed1854", "_blank");
         return { output: "Opening GitHub profile...", type: "success" };
     },
 
     linkedin: () => {
-        window.open("https://linkedin.com/in/YOUR_USERNAME", "_blank");
+        window.open("https://linkedin.com/in/ahed1854", "_blank");
         return { output: "Opening LinkedIn profile...", type: "success" };
     },
 
     email: () => {
-        window.location.href = "mailto:your.email@example.com";
+        window.location.href = "mailto:ahedshammas@gmail.com";
         return { output: "Opening email client...", type: "success" };
     },
 };
@@ -362,7 +359,8 @@ const addTerminalLine = (html, type = "output") => {
     line.className = "terminal-line";
 
     if (type === "prompt") {
-        line.innerHTML = `<span class="terminal-prompt">your-name@portfolio:${currentDir}$</span> <span class="terminal-cmd">${html}</span>`;
+        // Updated prompt to "ahed@portfolio"
+        line.innerHTML = `<span class="terminal-prompt">ahed@portfolio:${currentDir}$</span> <span class="terminal-cmd">${html}</span>`;
     } else if (type === "CLEAR") {
         terminalBody.innerHTML = "";
         return;
