@@ -731,7 +731,7 @@ body {
 .editor {
     flex: 1;
     overflow-y: auto;
-    overflow-x: auto;
+    overflow-x: hidden;
     padding: 2rem 0;
     position: relative;
 }
@@ -739,7 +739,6 @@ body {
 .code-content {
     counter-reset: line;
     padding: 0 2rem 4rem 4.5rem;
-    min-width: max-content;
     display: none;
 }
 
@@ -750,7 +749,8 @@ body {
 .line {
     counter-increment: line;
     position: relative;
-    white-space: nowrap;
+    white-space: normal;
+    overflow-wrap: break-word;
     min-height: 1.6em;
 }
 
