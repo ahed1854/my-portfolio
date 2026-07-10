@@ -765,15 +765,28 @@ body {
     user-select: none;
 }
 
-/* Git diff indicators */
-.line.added::before {
-    border-left: 3px solid #3fb950;
-    padding-left: calc(2.5rem - 3px);
+/* Git diff indicators — positioned in the line-number gutter */
+.line {
+    position: relative;
 }
 
-.line.modified::before {
-    border-left: 3px solid #d29922;
-    padding-left: calc(2.5rem - 3px);
+.line.added::after,
+.line.modified::after {
+    content: "";
+    position: absolute;
+    left: -3.5rem; /* align with the start of line-number gutter */
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    z-index: 1;
+}
+
+.line.added::after {
+    background: #3fb950;
+}
+
+.line.modified::after {
+    background: #d29922;
 }
 
 /* Indentation */
