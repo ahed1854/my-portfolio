@@ -799,6 +799,9 @@ body {
 .indent3 {
     padding-left: 6rem;
 }
+.indent4 {
+    padding-left: 8rem;
+}
 
 /* ============================================================
    TOKENS & SYNTAX HIGHLIGHTING
@@ -1188,6 +1191,9 @@ body {
     }
     .indent3 {
         padding-left: 4.5rem;
+    }
+    .indent4 {
+        padding-left: 6rem;
     }
 
     .command-palette {

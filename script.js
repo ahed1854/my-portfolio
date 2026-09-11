@@ -230,25 +230,31 @@ const terminalCommands = {
 Role: Junior Software Developer
 Location: Tartus, Syria
 Status: Fullstack Web Developer Trainee at Bytes4Future
-Currently: Building web applications with Laravel & PHP`,
+Currently: Building web applications with Next.js, React & Laravel`,
         type: "success",
     }),
 
     projects: () => ({
         output: `📁 Projects/
 
-  1. Lara Notes (2025)
-     └─ Laravel notes app with authentication and CRUD operations.
-     
-  2. My School Hub (2023-2024)
-     └─ Responsive school website with login functionality.`,
+  1. Card Clear (2026)
+     └─ Next.js card game with accounts, cross-device stats and USDT payments.
+     └─ Live at cardclear.cc
+
+  2. Olive Pressery (2026)
+     └─ SaaS suite for olive press businesses: REST API, 2 Expo apps, admin portal.
+
+  3. Lara Notes (2025)
+     └─ Laravel notes app with authentication and CRUD operations.`,
         type: "success",
     }),
 
     skills: () => ({
-        output: `Languages:   HTML, CSS, JavaScript, PHP, SQL
-Frameworks:  Laravel, Bootstrap
-Tools:       Git, GitHub, VS Code, MySQL`,
+        output: `Languages:       HTML, CSS, JavaScript, PHP, SQL, TypeScript
+Frameworks:      React, React Native, Next.js, Laravel, Bootstrap
+Tools:           Git, GitHub, VS Code, MySQL, pgAdmin 4, Supabase
+AI & Automation: AI-assisted development, prompt engineering,
+                 workflow automation, LLM API integration`,
         type: "success",
     }),
 

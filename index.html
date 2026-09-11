@@ -626,6 +626,38 @@
                                     ><span class="token-punctuation">;</span>
                                 </div>
                                 <div class="line indent">
+                                    <span class="token-property">duration</span
+                                    ><span class="token-operator">?:</span>
+                                    <span class="token-type">string</span
+                                    ><span class="token-punctuation">;</span>
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-property">access</span
+                                    ><span class="token-operator">?:</span>
+                                    <span class="token-string">"public"</span>
+                                    <span class="token-operator">|</span>
+                                    <span class="token-string">"private"</span
+                                    ><span class="token-punctuation">;</span>
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-property">highlights</span
+                                    ><span class="token-operator">?:</span>
+                                    <span class="token-type">string</span
+                                    ><span class="token-punctuation">[];</span>
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-property">architecture</span
+                                    ><span class="token-operator">?:</span>
+                                    <span class="token-type">object</span
+                                    ><span class="token-punctuation">;</span>
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-property">payments</span
+                                    ><span class="token-operator">?:</span>
+                                    <span class="token-type">object</span
+                                    ><span class="token-punctuation">;</span>
+                                </div>
+                                <div class="line indent">
                                     <span class="token-property">github</span
                                     ><span class="token-operator">?:</span>
                                     <span class="token-type">string</span
@@ -649,6 +681,297 @@
                                     ><span class="token-punctuation">[]</span>
                                     <span class="token-operator">=</span>
                                     <span class="token-punctuation">[</span>
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-punctuation">{</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">name</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-string project-name">"Card Clear"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">description</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-string">"A minimalist web card game built with Next.js. Clear all cards from five columns by selecting three cards that sum to 10, 20, or 30."</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">date</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-string">"2026"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-property">duration</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-string">"4 months"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">access</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-string">"private"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">tech</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-punctuation">[</span
+                                    ><span class="token-string">"Next.js 15"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string">"TypeScript"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string">"Tailwind CSS"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string">"Radix UI"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string">"shadcn/ui"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string">"Auth.js v5"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string">"Prisma"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string">"PostgreSQL"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string">"Neon"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string">"PWA"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string">"Sentry"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string">"Vercel"</span
+                                    ><span class="token-punctuation">],</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">highlights</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-punctuation">[</span>
+                                </div>
+                                <div class="line indent3">
+                                    <span class="token-string">"Full game engine: deal, claim set, undo, recycle, and win/loss detection"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent3">
+                                    <span class="token-string">"Auto-save to localStorage on every move, with a resume prompt on the menu"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent3">
+                                    <span class="token-string">"Animated deal, claim and shake effects, plus confetti on a win"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent3">
+                                    <span class="token-string">"Web Audio sound engine — 8 sound types with spatial panning"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent3">
+                                    <span class="token-string">"Auth.js v5 accounts with email verification and single-use reset links"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent3">
+                                    <span class="token-string">"Stats synced to PostgreSQL every 1.5s, merged cross-device on login"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent3">
+                                    <span class="token-string">"12 achievements across bronze, silver and gold tiers"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent3">
+                                    <span class="token-string">"PWA with offline support, Sentry error tracking and Vercel Analytics"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-punctuation">],</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">payments</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-punctuation">{</span>
+                                </div>
+                                <div class="line indent3">
+                                    <span class="token-property">method</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-string">"USDT on TRC-20, verified on-chain via the TronScan API"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent3">
+                                    <span class="token-property">reason</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-string">"Card networks are unavailable in Syria, so crypto is the only option"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent3">
+                                    <span class="token-property">unlocks</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-punctuation">[</span
+                                    ><span class="token-string">"extra undo moves"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string">"card themes"</span
+                                    ><span class="token-punctuation">]</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-punctuation">},</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">github</span
+                                    ><span class="token-operator">:</span>
+                                    <a href="https://github.com/ahed1854/card-clear" target="_blank" class="token-string link">"https://github.com/ahed1854/card-clear"</a
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">demo</span
+                                    ><span class="token-operator">:</span>
+                                    <a href="https://cardclear.cc" target="_blank" class="token-string link">"https://cardclear.cc"</a>
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-punctuation">},</span>
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-punctuation">{</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">name</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-string project-name">"Olive Pressery"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">description</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-string">"A complete SaaS solution for olive press businesses: a REST API, a mobile app for managers, a mobile app for accountants, and an admin dashboard."</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">date</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-string">"2026"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-property">duration</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-string">"2 months"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">access</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-string">"private"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">architecture</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-punctuation">{</span>
+                                </div>
+                                <div class="line indent3">
+                                    <span class="token-property">backend</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-punctuation">{</span>
+                                </div>
+                                <div class="line indent4">
+                                    <span class="token-property">stack</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-string">"Express.js + PostgreSQL (Prisma)"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent4">
+                                    <span class="token-property">host</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-string">"Render"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent3">
+                                    <span class="token-punctuation">},</span>
+                                </div>
+                                <div class="line indent3">
+                                    <span class="token-property">managerApp</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-punctuation">{</span>
+                                </div>
+                                <div class="line indent4">
+                                    <span class="token-property">stack</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-string">"React Native (Expo)"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent4">
+                                    <span class="token-property">host</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-string">"Expo / mobile"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent3">
+                                    <span class="token-punctuation">},</span>
+                                </div>
+                                <div class="line indent3">
+                                    <span class="token-property">accountantApp</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-punctuation">{</span>
+                                </div>
+                                <div class="line indent4">
+                                    <span class="token-property">stack</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-string">"React Native (Expo)"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent4">
+                                    <span class="token-property">host</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-string">"Expo / mobile"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent3">
+                                    <span class="token-punctuation">},</span>
+                                </div>
+                                <div class="line indent3">
+                                    <span class="token-property">adminPortal</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-punctuation">{</span>
+                                </div>
+                                <div class="line indent4">
+                                    <span class="token-property">stack</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-string">"React (Vite)"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent4">
+                                    <span class="token-property">host</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-string">"Vercel"</span
+                                    ><span class="token-punctuation">,</span>
+                                </div>
+                                <div class="line indent3">
+                                    <span class="token-punctuation">}</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-punctuation">},</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">tech</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-punctuation">[</span
+                                    ><span class="token-string">"Express.js"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string">"PostgreSQL"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string">"Prisma"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string">"React Native"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string">"Expo"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string">"React"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string">"Vite"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string">"TypeScript"</span
+                                    ><span class="token-punctuation">],</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-property">github</span
+                                    ><span class="token-operator">:</span>
+                                    <a href="https://github.com/ahed1854/olive-pressery" target="_blank" class="token-string link">"https://github.com/ahed1854/olive-pressery"</a>
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-punctuation">},</span>
                                 </div>
                                 <div class="line indent">
                                     <span class="token-punctuation">{</span>
@@ -694,56 +1017,6 @@
                                     <span class="token-property">demo</span
                                     ><span class="token-operator">:</span>
                                     <a href="https://laranotes.example.com" target="_blank" class="token-string link">"https://laranotes.example.com"</a>
-                                </div>
-                                <div class="line indent">
-                                    <span class="token-punctuation">},</span>
-                                </div>
-                                <div class="line indent">
-                                    <span class="token-punctuation">{</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-property">name</span
-                                    ><span class="token-operator">:</span>
-                                    <span class="token-string project-name">"My School Hub"</span
-                                    ><span class="token-punctuation">,</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-property">description</span
-                                    ><span class="token-operator">:</span>
-                                    <span class="token-string">"A responsive school website with login functionality, information pages, and a modern, accessible design. Built as a practice project for frontend and backend integration."</span
-                                    ><span class="token-punctuation">,</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-property">tech</span
-                                    ><span class="token-operator">:</span>
-                                    <span class="token-punctuation">[</span
-                                    ><span class="token-string">"HTML"</span
-                                    ><span class="token-punctuation">,</span>
-                                    <span class="token-string">"CSS"</span
-                                    ><span class="token-punctuation">,</span>
-                                    <span class="token-string">"JavaScript"</span
-                                    ><span class="token-punctuation">,</span>
-                                    <span class="token-string">"PHP"</span
-                                    ><span class="token-punctuation">,</span>
-                                    <span class="token-string">"MySQL"</span
-                                    ><span class="token-punctuation">],</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-property">date</span
-                                    ><span class="token-operator">:</span>
-                                    <span class="token-string">"2023-2024"</span
-                                    ><span class="token-punctuation">,</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-property">github</span
-                                    ><span class="token-operator">:</span>
-                                    <a href="https://github.com/ahed1854/my-school-hub" target="_blank" class="token-string link">"https://github.com/ahed1854/my-school-hub"</a
-                                    ><span class="token-punctuation">,</span>
-                                </div>
-                                <div class="line indent2">
-                                    <span class="token-property">demo</span
-                                    ><span class="token-operator">:</span>
-                                    <a href="https://myschoolhub.example.com" target="_blank" class="token-string link">"https://myschoolhub.example.com"</a>
                                 </div>
                                 <div class="line indent">
                                     <span class="token-punctuation">}</span>
@@ -796,6 +1069,12 @@
                                     <span class="token-punctuation">[</span>
                                 </div>
                                 <div class="line indent2">
+                                    <span class="token-string skill-tag">"React"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string skill-tag">"React Native"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string skill-tag">"Next.js"</span
+                                    ><span class="token-punctuation">,</span>
                                     <span class="token-string skill-tag">"Laravel"</span
                                     ><span class="token-punctuation">,</span>
                                     <span class="token-string skill-tag">"Bootstrap"</span>
@@ -815,7 +1094,28 @@
                                     ><span class="token-punctuation">,</span>
                                     <span class="token-string skill-tag">"VS Code"</span
                                     ><span class="token-punctuation">,</span>
-                                    <span class="token-string skill-tag">"MySQL"</span>
+                                    <span class="token-string skill-tag">"MySQL"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string skill-tag">"pgAdmin 4"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string skill-tag">"Supabase"</span>
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-punctuation">],</span>
+                                </div>
+                                <div class="line indent">
+                                    <span class="token-property">ai</span
+                                    ><span class="token-operator">:</span>
+                                    <span class="token-punctuation">[</span>
+                                </div>
+                                <div class="line indent2">
+                                    <span class="token-string skill-tag">"AI-assisted development"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string skill-tag">"Prompt engineering"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string skill-tag">"Workflow automation"</span
+                                    ><span class="token-punctuation">,</span>
+                                    <span class="token-string skill-tag">"LLM API integration"</span>
                                 </div>
                                 <div class="line indent">
                                     <span class="token-punctuation">]</span>
